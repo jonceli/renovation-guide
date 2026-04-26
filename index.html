@@ -400,7 +400,7 @@
         /* 套路卡片 */
         .trap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1rem;
         }
 
@@ -429,6 +429,20 @@
             color: var(--text-secondary);
             line-height: 1.6;
         }
+
+        .trap-detail {
+            font-size: 0.82rem;
+            color: var(--text);
+            line-height: 1.65;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .trap-detail strong {
+            color: var(--accent);
+        }
+        .trap-detail .how-fake { color: var(--danger); }
+        .trap-detail .how-beat { color: var(--success); }
 
         /* 流程图 */
         .flow-steps {
@@ -911,84 +925,164 @@
                     </div>
                     <div class="trap-grid">
                         <div class="trap-card">
-                            <div class="trap-title">设计费全免</div>
-                            <div class="trap-desc">诱导购买指定材料获取回扣，否则设计师不负责</div>
+                            <div class="trap-title">❌ 设计费全免</div>
+                            <div class="trap-desc">他们怎么说："设计费全免！价值2万的设计白送你！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>设计师不是做慈善，免设计费的前提是你必须在他们指定的商家买材料。设计师带你去选材，每一家都给设计师返点（通常15%-30%），你买得越贵，设计师赚得越多。如果你自己去买，设计师就不出图、不跟进，后期施工问题全推给你。<br>
+                                <span class="how-beat">✅ 怎么破：</span>问清楚免设计费的条件。如果必须买指定材料，算算总差价——你会发现"免费"的设计比付费的贵得多。宁可花5000-8000请独立设计师，也不接受捆绑消费。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">水电报低价</div>
-                            <div class="trap-desc">以低价吸引客户，最终费用远超预期</div>
+                            <div class="trap-title">❌ 水电报低价</div>
+                            <div class="trap-desc">他们怎么说："水电全包只要8000，别人家都报1万5！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>8000是"预估价"，合同里写的是"按实际发生量结算"。结果水电走完一算，2万起步。因为"预估"只算了最少点位，你家不可能只装那么少插座。而且水电是隐蔽工程，一旦做好了你看不到管子走向，只能付钱。<br>
+                                <span class="how-beat">✅ 怎么破：</span>合同必须写明水电上限（如"水电改造总价不超过12000元，超出部分由乙方承担"）。要求出详细水电图，标明每个点位，按图施工按图验收。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">零增项承诺</div>
-                            <div class="trap-desc">预算清单隐藏诸多未包含项目，后期加价</div>
+                            <div class="trap-title">❌ 零增项承诺</div>
+                            <div class="trap-desc">他们怎么说："我们承诺零增项，合同价就是最终价！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>"零增项"不等于"不涨价"。合同里故意漏掉很多必做项目：防水只报1遍（要做2-3遍）、墙面只报刮2遍腻子（要做3遍）、插座只算10个（你家需要30+个）……这些都是"漏项"，不是"增项"，所以"零增项承诺"完全合法。真正开工后，漏掉的全要加钱。<br>
+                                <span class="how-beat">✅ 怎么破：</span>不要看"零增项"，要看合同附的详细报价单。逐项对照你家的实际需求，要求把所有必做项目写进去。关键问一句："还有没有没列进来的必做项目？"让对方书面确认。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">七天退款</div>
-                            <div class="trap-desc">拖延时间，退款困难重重</div>
+                            <div class="trap-title">❌ 七天退款</div>
+                            <div class="trap-desc">他们怎么说："不满意七天无理由退款，你放心！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>交完定金后，设计师开始频繁联系你、出方案、约你看样板间……七天里你忙得没时间细想。等你第七天想退，对方说"方案已经出了，属于定制服务，不能退"。就算真能退，流程漫长，各种扣费，到手可能只剩一半。<br>
+                                <span class="how-beat">✅ 怎么破：</span>不要在现场交定金！再优惠也要回去冷静3天。如果一定要交，写收据而不是合同，收据上注明"可全额退还"，拍照留存。法律规定定金不超过总价20%，超过部分可以要求退还。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">拎包入住</div>
-                            <div class="trap-desc">不包括窗帘、软装和活动家具，需额外付费</div>
+                            <div class="trap-title">❌ 拎包入住</div>
+                            <div class="trap-desc">他们怎么说："全屋硬装+软装一价全包，拎包就住！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>"全包"的定义非常窄。不含窗帘、不含活动家具（沙发、餐桌椅、床架）、不含灯具、不含家电、不含开关面板……说是拎包入住，其实还差一半东西要自己买。而且全包里的软装品质很差，想换好的？加钱。<br>
+                                <span class="how-beat">✅ 怎么破：</span>要求对方列出"全包"包含和不包含的完整清单，不包含的标注市场价。对比下来，你多半会发现"全包"比半包+自购更贵。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">工程量少算</div>
-                            <div class="trap-desc">故意少算工程量，超出部分额外收费</div>
+                            <div class="trap-title">❌ 工程量少算</div>
+                            <div class="trap-desc">他们怎么说："我们这报价很低，比别家便宜30%！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>低价是因为工程量故意少算。墙面面积按建筑面积而不是实际面积算、吊顶只算客厅不算过道、防水只算地面不算墙面……装修开始后，"实际工程量"远超预算，超出的部分单价往往比正常价高20%-50%。<br>
+                                <span class="how-beat">✅ 怎么破：</span>自己量一遍面积，和报价单对。合同里加一条："实际工程量与预算偏差超过5%的，超出部分由乙方承担"。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">送家电</div>
-                            <div class="trap-desc">赠送品质差，升级后价格与市场相当</div>
+                            <div class="trap-title">❌ 送家电</div>
+                            <div class="trap-desc">他们怎么说："签约送全套家电！空调冰箱洗衣机全有！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>送的家电是最便宜的低端款，噪音大、能效低、容易坏。想换好的？"可以啊，补差价就行"——差价加上去，总价和别人家不送家电的一样。本质上家电钱早就算在报价里了，还多赚你一笔。<br>
+                                <span class="how-beat">✅ 怎么破：</span>问两个价：送家电和不送家电分别多少。你会发现不送的更便宜，省下的钱自己买能选更好的。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">面积套路</div>
-                            <div class="trap-desc">按更大面积收费，多出部分作为利润</div>
+                            <div class="trap-title">❌ 面积套路</div>
+                            <div class="trap-desc">他们怎么说："我们按实际使用面积算，不收公摊！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>"实际使用面积"可能是含墙体面积的，比你的套内面积大不少。而且不同公司计算方式不同，有的按建筑面积、有的按套内面积、有的按实测面积——但你不知道哪个划算，因为单价也不同。低价+大面积，总价反而更高。<br>
+                                <span class="how-beat">✅ 怎么破：</span>不要比单价，比总价。要求按你的房产证面积×单价报价，白纸黑字写死面积数和计算方式。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">铺瓷砖加价</div>
-                            <div class="trap-desc">门石、波导线、薄贴、对缝均额外收费</div>
+                            <div class="trap-title">❌ 铺瓷砖加价</div>
+                            <div class="trap-desc">他们怎么说："铺砖50一平，很实惠！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>50块是"基础铺贴费"。开工后你会发现：过门石+50/条、波导线+30/米、薄贴法（大砖必须用）+20/平、对缝+15/平、阳角碰角+25/米、切割费+10/米、异形铺贴翻倍……最后实际每平100+。而且这些全是"合同外项目"，不付就停工。<br>
+                                <span class="how-beat">✅ 怎么破：</span>签合同前问清楚所有铺砖相关费用，要求写进报价单。重点问：过门石、波导线、薄贴、对缝、碰角、切割，这几项加起来比铺贴费本身还贵。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">吊顶加价</div>
-                            <div class="trap-desc">加装中央空调后，原预算不包含额外吊顶</div>
+                            <div class="trap-title">❌ 吊顶加价</div>
+                            <div class="trap-desc">他们怎么说："客餐厅吊顶全包，含人工材料！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>报价只含最简单的平顶。如果你要装中央空调或新风，需要做下挂吊顶包管道，这部分不在报价内，另外加3000-5000。灯槽、弧形造型、双眼皮吊顶，每一项都额外加钱。不做？那管线裸露着，你忍不了只能加钱。<br>
+                                <span class="how-beat">✅ 怎么破：</span>提前确定要不要装中央空调/新风，在报价阶段就要求包含设备吊顶。造型吊顶也要提前确认并写入报价。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">材料选择套路</div>
-                            <div class="trap-desc">以无货为由迫使加钱换材料，或用低质辅材</div>
+                            <div class="trap-title">❌ 材料选择套路</div>
+                            <div class="trap-desc">他们怎么说："我们用的是XX品牌正品，品质有保障！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>合同只写品牌不写型号，用该品牌最差的工程款（专供装修公司的低配版，质量比零售版差很多）。或者做到一半告诉你"这个型号没货了，推荐你换这款"——换的更贵。辅材更坑：合同写"品牌腻子"，实际用的杂牌，你根本分不出来。<br>
+                                <span class="how-beat">✅ 怎么破：</span>合同必须写明品牌+型号+规格，主材和辅材都要写。材料进场时拍照核对，不对的拒收。加一条："未经甲方书面同意，不得更换任何材料品牌及型号"。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">地面找平</div>
-                            <div class="trap-desc">以地面不平为由增加找平厚度加收费用</div>
+                            <div class="trap-title">❌ 地面找平</div>
+                            <div class="trap-desc">他们怎么说："你家地面不平，得做找平，不然铺不了地板"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>有些地面确实需要找平，但很多装修公司夸大不平程度，多报找平厚度。比如只需要5mm自流平，报15mm水泥砂浆找平，面积还多算。一平差30-50块，全屋多花大几千。<br>
+                                <span class="how-beat">✅ 怎么破：</span>要求用靠尺实测，当场给你看偏差数据。偏差＜5mm用自流平即可（便宜），偏差5-15mm用水泥砂浆，超过15mm要先处理原地面。找平厚度和方式写进合同。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">洁具全包</div>
-                            <div class="trap-desc">限制品牌选择，跨品牌需额外付费</div>
+                            <div class="trap-title">❌ 洁具全包</div>
+                            <div class="trap-desc">他们怎么说："马桶花洒水龙头全包，不用你操心！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>"全包"只限指定品牌的指定款式（通常是滞销款或工程款），想换其他品牌或其他款式？加钱。而且这些指定款市场价可能只要报价的1/3。更过分的是，有些"全包"不包含角阀、软管等安装配件，装的时候另外收费。<br>
+                                <span class="how-beat">✅ 怎么破：</span>要求看实物（不是图片），在网上搜同款比价。洁具建议自购，花同样的钱能买到好得多的产品。如果全包，确认配件是否齐全，品牌型号写进合同。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">橱柜全包</div>
-                            <div class="trap-desc">地柜够但吊柜不足，需额外付费增加</div>
+                            <div class="trap-title">❌ 橱柜全包</div>
+                            <div class="trap-desc">他们怎么说："3米地柜+1米吊柜全包，够用了！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>3米地柜1米吊柜根本不够用！正常厨房至少需要4-5米地柜+2米吊柜。不够的部分按零售价加，比合同单价贵一倍。另外台面只含最差的钙粉石英石，升级要加钱；五金铰链不含缓冲，想静音？加钱；拉手样式只有一种，想换？加钱。<br>
+                                <span class="how-beat">✅ 怎么破：</span>先自己量好需要的橱柜总长度，和报价单对比。要求报价按你家实际尺寸出，不要"套餐"。确认台面材质、五金品牌、拉手样式，全部写进合同。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">衣柜全包</div>
-                            <div class="trap-desc">故意缩短尺寸，超出的加钱，不含挂衣杆抽屉</div>
+                            <div class="trap-title">❌ 衣柜全包</div>
+                            <div class="trap-desc">他们怎么说："全屋衣柜全包，不限面积！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>"不限面积"是骗人的，限制的是内部配置：不含抽屉（加一个300-500）、不含挂衣杆（加一根200）、不含裤架领带格、不含感应灯、隔板只有3层（正常要5-6层）。而且衣柜深度可能只做55cm（正常要60cm），挂不了大衣。<br>
+                                <span class="how-beat">✅ 怎么破：</span>合同写明：衣柜深度≥60cm、包含抽屉数量、挂衣杆、裤架等。画好内部布局图让对方确认签字，照图施工照图验收。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">工程管理费</div>
-                            <div class="trap-desc">收取5%-10%管理费，实则可协商减免</div>
+                            <div class="trap-title">❌ 工程管理费</div>
+                            <div class="trap-desc">他们怎么说："5%工程管理费，行业标准，每家都收"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>所谓"管理费"就是给你派个项目经理（有的还兼职管好几个工地），每周来1-2次看看。5%-10%的管理费，10万的装修收5000-10000，但实际管理成本远低于此。而且"行业标准"根本不存在，很多公司不收或可谈。<br>
+                                <span class="how-beat">✅ 怎么破：</span>管理费可以谈，从5%砍到2%甚至免除。谈不下来就让对方在施工单价上再降，总价不变就行。别被"行业标准"唬住。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">付款套路</div>
-                            <div class="trap-desc">装修前付50%，水电后增至80%，问题暴露难约束</div>
+                            <div class="trap-title">❌ 付款套路</div>
+                            <div class="trap-desc">他们怎么说："按工程进度付款，很合理！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>典型的付款节奏是：签约付50%、水电完付30%、油漆完付15%、验收付5%。水电做完你已经付了80%，后面发现问题，工长一句"钱都收了差不多"就开始敷衍了。最关键的是，5%尾款太少了，大问题（如漏水、开裂）5%根本覆盖不了维修费。<br>
+                                <span class="how-beat">✅ 怎么破：</span>争取付款节奏：30%→30%→25%→15%，尾款不低于10%。加一条："验收合格后30天内无质量问题再付尾款"。绝对不要一次性付超过50%。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">征集样板间</div>
-                            <div class="trap-desc">催促交定金，价格和工艺未必有优势</div>
+                            <div class="trap-title">❌ 征集样板间</div>
+                            <div class="trap-desc">他们怎么说："您家被选为小区样板间，享受工厂价！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>每个小区都会"征集"10-20个"样板间"，你家并不特殊。所谓"工厂价"只是把原价虚高再打折，实际并不便宜。更重要的是，征集样板间的目的是让你尽快交定金——"名额有限，今天就定"。一旦交了定金，议价权就没了。<br>
+                                <span class="how-beat">✅ 怎么破：</span>别被"专属""限量"冲昏头。无论什么优惠，都要拿报价单回去对比。真想做样板间，要求书面承诺：具体优惠金额、施工标准、后期带人参观的补偿方案。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">砸金蛋</div>
-                            <div class="trap-desc">营销手段，诱导冲动交定金，退定困难</div>
+                            <div class="trap-title">❌ 砸金蛋</div>
+                            <div class="trap-desc">他们怎么说："今天签约砸金蛋，最高赢5000元家电！"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>金蛋里都是些低成本东西：小家电、代金券（限定使用条件）、装饰品。5000元大奖的概率无限接近零。砸金蛋的唯一目的：营造热闹氛围，让你在群体压力和兴奋状态下冲动签约。冷静下来你会发现，"优惠"后的价格比别人家正常报价还贵。<br>
+                                <span class="how-beat">✅ 怎么破：</span>记住：所有营销活动的成本都算在报价里。不参加活动、不砸金蛋、不抽奖，直接谈底价，才是真省钱。
+                            </div>
                         </div>
                         <div class="trap-card">
-                            <div class="trap-title">口头承诺</div>
-                            <div class="trap-desc">签后难以兑现，合同外承诺无法律依据</div>
+                            <div class="trap-title">❌ 口头承诺</div>
+                            <div class="trap-desc">他们怎么说："放心，这个后面送你/帮你弄/不加钱"</div>
+                            <div class="trap-detail">
+                                <span class="how-fake">👉 坑在哪：</span>设计师、销售、工长说的话，只要没写进合同，等于没说。"这个后面送你"→后面说不送了；"帮你升级"→后面说没说过；"不加钱"→后面说这是新加的项目。最气人的是，当初承诺的那个人可能已经离职了。<br>
+                                <span class="how-beat">✅ 怎么破：</span>所有承诺，无论大小，必须写进合同补充条款。对方说"不用写，口头说就行"，那你就说"不写进合同我就不签"。微信聊天记录也要保留，万一有争议，聊天记录可作为辅助证据。
+                            </div>
                         </div>
                     </div>
 
