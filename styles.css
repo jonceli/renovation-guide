@@ -368,6 +368,30 @@
             margin-bottom: 0.85rem;
         }
 
+        .summary-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .directory-summary {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            margin-top: 0.35rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .directory-cta {
+            display: inline-flex;
+            margin-top: auto;
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
 
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -381,6 +405,15 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
+        }
+
+        .homepage-chapter-directory {
+            padding-top: 1rem;
+            padding-bottom: 4rem;
+        }
+
+        .homepage-summary-grid {
+            align-items: stretch;
         }
 
         /* 章节卡片 */
@@ -869,6 +902,95 @@
             font-size: 0.9rem;
         }
 
+        .nav-links-static {
+            display: flex;
+        }
+
+        .chapter-page-body .header {
+            position: sticky;
+        }
+
+        .chapter-page-main {
+            max-width: 960px;
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+        }
+
+        .chapter-page-hero,
+        .chapter-page-article,
+        .chapter-page-nav {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .chapter-page-hero {
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chapter-page-meta {
+            color: var(--accent);
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.9rem;
+        }
+
+        .chapter-page-hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 0.7rem;
+        }
+
+        .chapter-page-subtitle {
+            color: var(--accent-light);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-page-summary {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chapter-page-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-page-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .chapter-page-article {
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .chapter-page-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.25rem 1.4rem;
+            align-items: center;
+        }
+
+        .chapter-nav-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link.disabled {
+            color: var(--text-muted);
+        }
+
         /* 响应式 */
         @media (max-width: 768px) {
             .header {
@@ -894,6 +1016,16 @@
 
             .nav-links.active {
                 display: flex;
+            }
+
+            .nav-links-static {
+                position: static;
+                display: flex;
+                flex-direction: row;
+                padding: 0;
+                background: transparent;
+                border-bottom: none;
+                gap: 0.75rem;
             }
 
             .hero {
@@ -944,6 +1076,24 @@
 
             .trap-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .chapter-page-main {
+                padding-top: 1.5rem;
+            }
+
+            .chapter-page-hero,
+            .chapter-page-nav {
+                padding: 1.25rem;
+            }
+
+            .chapter-page-actions {
+                flex-direction: column;
+            }
+
+            .chapter-page-nav {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 

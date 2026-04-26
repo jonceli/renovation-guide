@@ -16,6 +16,7 @@
         function toggleNav(forceState = null) {
             const nav = document.getElementById('navLinks');
             const button = document.querySelector('.nav-toggle');
+            if (!nav) return;
             const nextState = forceState === null ? !nav.classList.contains('active') : forceState;
             nav.classList.toggle('active', nextState);
             if (button) button.setAttribute('aria-expanded', String(nextState));
@@ -39,6 +40,7 @@
         // 显示/隐藏返回顶部按钮
         window.addEventListener('scroll', function() {
             const backToTop = document.getElementById('backToTop');
+            if (!backToTop) return;
             if (window.scrollY > 500) {
                 backToTop.classList.add('visible');
             } else {
