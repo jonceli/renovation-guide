@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>装修流程指南 | 19步完整攻略</title>
+    <meta name="description" content="10章精选装修避坑指南，涵盖验房、预算、合同、防水、木工、瓦工、油工、环保国标与设计灵感。">
+    <meta name="theme-color" content="#0f0f0f">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="装修流程指南 | 10章精选避坑攻略">
+    <meta property="og:description" content="从验房到竣工，精选10个关键章节，帮你少踩坑、少花冤枉钱。">
+    <meta property="og:url" content="https://jonceli.github.io/renovation-guide/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&h=630&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="装修流程指南 | 10章精选避坑攻略">
+    <meta name="twitter:description" content="精选10个关键章节，覆盖验房、合同、施工标准与环保国标。">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&h=630&q=80">
+    <title>装修流程指南 | 10章精选避坑攻略</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -32,6 +43,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 96px;
         }
 
         body {
@@ -99,8 +111,10 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.1rem;
             list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .nav-links a {
@@ -112,6 +126,35 @@
 
         .nav-links a:hover {
             color: var(--accent);
+        }
+
+        .nav-toggle:focus-visible,
+        .nav-links a:focus-visible,
+        .chapter-header:focus-visible,
+        .btn:focus-visible,
+        .quick-start-card:focus-visible,
+        .directory-card:focus-visible,
+        .back-to-top:focus-visible,
+        .skip-link:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -40px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            z-index: 1200;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
         }
 
         /* Hero区域 */
@@ -197,7 +240,7 @@
 
         .stat-label {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         .scroll-indicator {
@@ -213,6 +256,139 @@
             font-size: 0.8rem;
             animation: bounce 2s infinite;
         }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            padding: 0.9rem 1.4rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--bg-primary);
+            border-color: transparent;
+        }
+
+        .btn-secondary {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .guide-overview {
+            position: relative;
+            z-index: 1;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-heading p {
+            color: var(--text-secondary);
+            max-width: 760px;
+        }
+
+        .section-eyebrow {
+            display: inline-block;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-heading-compact {
+            margin-top: 2.5rem;
+        }
+
+        .quick-start-grid,
+        .directory-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quick-start-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .directory-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .quick-start-card,
+        .directory-card {
+            display: block;
+            text-decoration: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.15rem 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .quick-start-card:hover,
+        .directory-card:hover {
+            border-color: rgba(212, 165, 116, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+        }
+
+        .quick-start-card strong,
+        .directory-card strong {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 0.45rem;
+            font-size: 1rem;
+        }
+
+        .quick-start-card span,
+        .directory-card span {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .directory-card .directory-index {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(212, 165, 116, 0.12);
+            color: var(--accent);
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+
 
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -244,13 +420,18 @@
         }
 
         .chapter-header {
+            width: 100%;
             padding: 2rem;
             display: flex;
             align-items: center;
             gap: 1.5rem;
             cursor: pointer;
             user-select: none;
+            border: none;
             border-bottom: 1px solid transparent;
+            background: transparent;
+            color: inherit;
+            text-align: left;
             transition: all 0.3s;
         }
 
@@ -736,6 +917,26 @@
                 display: flex;
             }
 
+            .hero {
+                min-height: auto;
+                padding-top: 7rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                min-width: 0;
+                width: 100%;
+            }
+
+            .guide-overview {
+                margin-top: 0;
+            }
+
             .hero-stats {
                 gap: 2rem;
             }
@@ -789,32 +990,36 @@
     </style>
 </head>
 <body>
+    <a href="#guide-content" class="skip-link">跳到正文</a>
+
     <!-- 顶部导航 -->
     <header class="header">
         <div class="header-content">
-            <a href="#" class="logo">🏠 装修指南</a>
-            <button class="nav-toggle" onclick="toggleNav()">目录</button>
+            <a href="#top" class="logo">🏠 装修指南</a>
+            <button class="nav-toggle" onclick="toggleNav()" aria-expanded="false" aria-controls="navLinks">目录</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#chapter1">验房</a></li>
                 <li><a href="#chapter2">准备工作</a></li>
                 <li><a href="#chapter9">材料选购</a></li>
-                <li><a href="#chapter10">避坑指南</a></li>
+                <li><a href="#chapter10">合同避坑</a></li>
+                <li><a href="#chapter11">施工工艺</a></li>
+                <li><a href="#chapter17">国标汇总</a></li>
                 <li><a href="#chapter20">设计资源</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero区域 -->
-    <section class="hero">
+    <section class="hero" id="top">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <span class="hero-badge">2026 完整版</span>
-            <h1>装修流程全攻略</h1>
-            <p>19个章节，从验房到竣工，涵盖装修公司套路、施工标准、验收规范，助你避坑省钱</p>
+            <span class="hero-badge">2026 精选版</span>
+            <h1>装修流程指南</h1>
+            <p>精选10个关键章节，从验房到竣工，覆盖预算、合同、施工标准与验收重点，帮助第一次装修先建立全局认知。</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">20</span>
-                    <span class="stat-label">完整章节</span>
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">精选章节</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">120+</span>
@@ -825,6 +1030,10 @@
                     <span class="stat-label">材料标准</span>
                 </div>
             </div>
+            <div class="hero-actions">
+                <a href="#guide-overview" class="btn btn-primary">查看完整目录</a>
+                <a href="#chapter1" class="btn btn-secondary">从第1章开始</a>
+            </div>
         </div>
         <div class="scroll-indicator">
             <span>向下滚动</span>
@@ -834,11 +1043,56 @@
         </div>
     </section>
 
+    <section class="guide-overview main-content" id="guide-overview">
+        <div class="section-heading">
+            <span class="section-eyebrow">快速开始</span>
+            <h2>先看什么，一目了然</h2>
+            <p>如果你是第一次装修，建议先读验房、准备工作、合同避坑，再进入防水、木工、瓦工、油工等施工章节。</p>
+        </div>
+        <div class="quick-start-grid">
+            <a class="quick-start-card" href="#chapter1">
+                <strong>新手起步</strong>
+                <span>01 验房 → 02 准备工作</span>
+            </a>
+            <a class="quick-start-card" href="#chapter10">
+                <strong>先避坑再签合同</strong>
+                <span>09 材料选购 → 10 合同避坑</span>
+            </a>
+            <a class="quick-start-card" href="#chapter11">
+                <strong>进入施工阶段</strong>
+                <span>11 防水 → 12 木工 → 13 瓦工 → 14 油工</span>
+            </a>
+            <a class="quick-start-card" href="#chapter17">
+                <strong>验收与维权参考</strong>
+                <span>17 国标汇总 → 20 设计资源</span>
+            </a>
+        </div>
+
+        <div class="section-heading section-heading-compact">
+            <span class="section-eyebrow">完整目录</span>
+            <h2>10章精选内容</h2>
+            <p>当前版本为精选 10 章，覆盖装修决策、施工重点、环保标准与设计灵感。后续如继续扩展章节，可再恢复完整流程编号体系。</p>
+        </div>
+        <div class="directory-grid">
+            <a class="directory-card" href="#chapter1"><span class="directory-index">01</span><strong>验房的注意事项</strong><span>精装修房验收 · 新房毛坯验收</span></a>
+            <a class="directory-card" href="#chapter2"><span class="directory-index">02</span><strong>装修前的准备工作</strong><span>预算评估 · 自装/半包/全包</span></a>
+            <a class="directory-card" href="#chapter9"><span class="directory-index">09</span><strong>材料选购对比</strong><span>地暖选择 · 柜体方案 · 封窗底线</span></a>
+            <a class="directory-card" href="#chapter10"><span class="directory-index">10</span><strong>小白业主装修合同指南</strong><span>增项漏项 · 定制套路 · 合同细节</span></a>
+            <a class="directory-card" href="#chapter11"><span class="directory-index">11</span><strong>防水施工</strong><span>材料标准 · 流程节点 · 验收方法</span></a>
+            <a class="directory-card" href="#chapter12"><span class="directory-index">12</span><strong>木工施工</strong><span>吊顶隔音 · 开裂风险 · 验收标准</span></a>
+            <a class="directory-card" href="#chapter13"><span class="directory-index">13</span><strong>瓦工施工</strong><span>瓷砖铺贴 · 回填防水 · 空鼓平整度</span></a>
+            <a class="directory-card" href="#chapter14"><span class="directory-index">14</span><strong>油工施工</strong><span>基层处理 · 腻子乳胶漆 · 观感验收</span></a>
+            <a class="directory-card" href="#chapter17"><span class="directory-index">17</span><strong>施工竣工及环保国标汇总</strong><span>施工规范 · 环保标准 · 维权依据</span></a>
+            <a class="directory-card" href="#chapter20"><span class="directory-index">20</span><strong>设计资源</strong><span>灵感网站 · 风格参考 · 使用建议</span></a>
+        </div>
+    </section>
+
     <!-- 主内容区 -->
-    <main class="main-content">
+    <main class="main-content" id="guide-content">
+
         <!-- 第1章：验房 -->
         <article class="chapter-card fade-in" id="chapter1">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter1-content" id="chapter1-trigger">
                 <div class="chapter-number">01</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">验房的注意事项</h2>
@@ -850,7 +1104,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter1-content" role="region" aria-labelledby="chapter1-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=300&fit=crop" alt="新房验房场景" class="chapter-image">
                     <div class="tip-box">
@@ -900,7 +1154,7 @@
 
         <!-- 第2章：装修前准备 -->
         <article class="chapter-card fade-in" id="chapter2">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter2-content" id="chapter2-trigger">
                 <div class="chapter-number">02</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">装修前的准备工作</h2>
@@ -912,7 +1166,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter2-content" role="region" aria-labelledby="chapter2-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1503387762-592deb583902?w=800&h=300&fit=crop" alt="装修规划与预算" class="chapter-image">
                     <div class="tip-box">
@@ -1221,7 +1475,7 @@
 
         <!-- 第9章：材料选购对比 -->
         <article class="chapter-card fade-in" id="chapter9">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter9-content" id="chapter9-trigger">
                 <div class="chapter-number">09</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">材料选购对比</h2>
@@ -1233,7 +1487,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter9-content" role="region" aria-labelledby="chapter9-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=300&fit=crop" alt="装修材料选购" class="chapter-image">
                     <div class="tip-box">
@@ -1332,7 +1586,7 @@
 
         <!-- 第10章：小白业主装修合同指南 -->
         <article class="chapter-card fade-in" id="chapter10">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter10-content" id="chapter10-trigger">
                 <div class="chapter-number">10</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">小白业主装修合同指南</h2>
@@ -1344,7 +1598,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter10-content" role="region" aria-labelledby="chapter10-trigger">
                 <div class="chapter-body">
                     <div class="info-box warning-box">
                         <h4>衣柜定制20+套路</h4>
@@ -1469,7 +1723,7 @@
 
         <!-- 第11章：防水施工 -->
         <article class="chapter-card fade-in" id="chapter11">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter11-content" id="chapter11-trigger">
                 <div class="chapter-number">11</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">防水施工</h2>
@@ -1481,7 +1735,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter11-content" role="region" aria-labelledby="chapter11-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&h=300&fit=crop" alt="卫生间防水施工" class="chapter-image">
                     <div class="tip-box">
@@ -1560,7 +1814,7 @@
 
         <!-- 第12章：木工施工 -->
         <article class="chapter-card fade-in" id="chapter12">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter12-content" id="chapter12-trigger">
                 <div class="chapter-number">12</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">木工施工</h2>
@@ -1572,7 +1826,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter12-content" role="region" aria-labelledby="chapter12-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=300&fit=crop" alt="木工吊顶施工" class="chapter-image">
                     <div class="tip-box">
@@ -1627,7 +1881,7 @@
 
         <!-- 第13章：瓦工施工 -->
         <article class="chapter-card fade-in" id="chapter13">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter13-content" id="chapter13-trigger">
                 <div class="chapter-number">13</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">瓦工施工</h2>
@@ -1639,7 +1893,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter13-content" role="region" aria-labelledby="chapter13-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=300&fit=crop" alt="瓷砖铺贴施工" class="chapter-image">
                     <div class="tip-box">
@@ -1694,7 +1948,7 @@
 
         <!-- 第14章：油工施工 -->
         <article class="chapter-card fade-in" id="chapter14">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter14-content" id="chapter14-trigger">
                 <div class="chapter-number">14</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">油工施工</h2>
@@ -1706,7 +1960,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter14-content" role="region" aria-labelledby="chapter14-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800&h=300&fit=crop" alt="墙面刷漆施工" class="chapter-image">
                     <div class="tip-box">
@@ -1775,9 +2029,78 @@
             </div>
         </article>
 
+        <!-- 第17章：施工竣工及环保国标汇总 -->
+        <article class="chapter-card fade-in" id="chapter17">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter17-content" id="chapter17-trigger">
+                <div class="chapter-number">17</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">施工竣工及环保国标汇总</h2>
+                    <p class="chapter-subtitle">施工规范 · 验收标准 · 环保国标</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content" id="chapter17-content" role="region" aria-labelledby="chapter17-trigger">
+                <div class="chapter-body">
+                    <div class="tip-box">
+                        <h4>💡 这些国标是你的维权利器</h4>
+                        <p>装修出问题时，光说"我觉得不合格"是没用的，要有依据。以下国标是你在验收、维权时最权威的参考——拿给工长看，比吵架管用100倍。建议收藏本页，验收时对照检查。</p>
+                    </div>
+                    <div class="content-grid">
+                        <div class="info-box">
+                            <h4>📐 施工规范标准</h4>
+                            <ul>
+                                <li><strong>砌体结构通用规范</strong> - GB 55007-2021</li>
+                                <li><strong>住宅装修施工规范</strong></li>
+                                <li><strong>建筑施工质量验收规范</strong></li>
+                                <li><strong>瓷砖薄贴法施工规程</strong></li>
+                                <li><strong>综合布线设计规范</strong></li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>🌿 环保国标汇总</h4>
+                            <table class="material-table">
+                                <tr>
+                                    <th>材料类型</th>
+                                    <th>标准号</th>
+                                </tr>
+                                <tr>
+                                    <td>人造板甲醛释放量</td>
+                                    <td>GB/T 39600-2021</td>
+                                </tr>
+                                <tr>
+                                    <td>壁纸有害物质限量</td>
+                                    <td>GB 18585-2023</td>
+                                </tr>
+                                <tr>
+                                    <td>胶粘剂有害物质限量</td>
+                                    <td>GB 18583-2008</td>
+                                </tr>
+                                <tr>
+                                    <td>乳胶漆有害物质限量</td>
+                                    <td>GB 18582-2020</td>
+                                </tr>
+                                <tr>
+                                    <td>木器涂料有害物质限量</td>
+                                    <td>GB 18581-2020</td>
+                                </tr>
+                                <tr>
+                                    <td>全屋定制国家标准</td>
+                                    <td>GB/T 39600-2021</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
         <!-- 第20章：设计资源 -->
         <article class="chapter-card fade-in" id="chapter20">
-            <div class="chapter-header" onclick="toggleChapter(this)">
+            <div class="chapter-header" role="button" tabindex="0" onclick="toggleChapter(this)" onkeydown="handleChapterKeydown(event, this)" aria-expanded="false" aria-controls="chapter20-content" id="chapter20-trigger">
                 <div class="chapter-number">20</div>
                 <div class="chapter-title-group">
                     <h2 class="chapter-title">设计资源</h2>
@@ -1789,7 +2112,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="chapter-content">
+            <div class="chapter-content" id="chapter20-content" role="region" aria-labelledby="chapter20-trigger">
                 <div class="chapter-body">
                     <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=300&fit=crop" alt="室内设计灵感" class="chapter-image">
                     <div class="tip-box">
@@ -1850,75 +2173,6 @@
             </div>
         </article>
 
-        <!-- 第17章：施工竣工及环保国标汇总 -->
-        <article class="chapter-card fade-in" id="chapter17">
-            <div class="chapter-header" onclick="toggleChapter(this)">
-                <div class="chapter-number">17</div>
-                <div class="chapter-title-group">
-                    <h2 class="chapter-title">施工竣工及环保国标汇总</h2>
-                    <p class="chapter-subtitle">施工规范 · 验收标准 · 环保国标</p>
-                </div>
-                <div class="chapter-toggle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="chapter-content">
-                <div class="chapter-body">
-                    <div class="tip-box">
-                        <h4>💡 这些国标是你的维权利器</h4>
-                        <p>装修出问题时，光说"我觉得不合格"是没用的，要有依据。以下国标是你在验收、维权时最权威的参考——拿给工长看，比吵架管用100倍。建议收藏本页，验收时对照检查。</p>
-                    </div>
-                    <div class="content-grid">
-                        <div class="info-box">
-                            <h4>📐 施工规范标准</h4>
-                            <ul>
-                                <li><strong>砌体结构通用规范</strong> - GB 55007-2021</li>
-                                <li><strong>住宅装修施工规范</strong></li>
-                                <li><strong>建筑施工质量验收规范</strong></li>
-                                <li><strong>瓷砖薄贴法施工规程</strong></li>
-                                <li><strong>综合布线设计规范</strong></li>
-                            </ul>
-                        </div>
-                        <div class="info-box">
-                            <h4>🌿 环保国标汇总</h4>
-                            <table class="material-table">
-                                <tr>
-                                    <th>材料类型</th>
-                                    <th>标准号</th>
-                                </tr>
-                                <tr>
-                                    <td>人造板甲醛释放量</td>
-                                    <td>GB/T 39600-2021</td>
-                                </tr>
-                                <tr>
-                                    <td>壁纸有害物质限量</td>
-                                    <td>GB 18585-2023</td>
-                                </tr>
-                                <tr>
-                                    <td>胶粘剂有害物质限量</td>
-                                    <td>GB 18583-2008</td>
-                                </tr>
-                                <tr>
-                                    <td>乳胶漆有害物质限量</td>
-                                    <td>GB 18582-2020</td>
-                                </tr>
-                                <tr>
-                                    <td>木器涂料有害物质限量</td>
-                                    <td>GB 18581-2020</td>
-                                </tr>
-                                <tr>
-                                    <td>全屋定制国家标准</td>
-                                    <td>GB/T 39600-2021</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
     </main>
 
     <!-- Footer -->
@@ -1928,7 +2182,7 @@
     </footer>
 
     <!-- 返回顶部 -->
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    <div class="back-to-top" id="backToTop" role="button" tabindex="0" aria-label="返回顶部" onclick="scrollToTop()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();scrollToTop();}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 15l-6-6-6 6"/>
         </svg>
@@ -1938,12 +2192,34 @@
         // 切换章节展开/收起
         function toggleChapter(header) {
             const card = header.parentElement;
-            card.classList.toggle('active');
+            const isActive = card.classList.toggle('active');
+            header.setAttribute('aria-expanded', String(isActive));
+        }
+
+        function handleChapterKeydown(event, header) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleChapter(header);
+            }
         }
 
         // 切换导航
-        function toggleNav() {
-            document.getElementById('navLinks').classList.toggle('active');
+        function toggleNav(forceState = null) {
+            const nav = document.getElementById('navLinks');
+            const button = document.querySelector('.nav-toggle');
+            const nextState = forceState === null ? !nav.classList.contains('active') : forceState;
+            nav.classList.toggle('active', nextState);
+            if (button) button.setAttribute('aria-expanded', String(nextState));
+        }
+
+        function expandChapterFromHash() {
+            if (!window.location.hash) return;
+            const target = document.querySelector(window.location.hash);
+            if (target && target.classList.contains('chapter-card')) {
+                const header = target.querySelector('.chapter-header');
+                target.classList.add('active');
+                if (header) header.setAttribute('aria-expanded', 'true');
+            }
         }
 
         // 滚动到顶部
@@ -1961,13 +2237,29 @@
             }
         });
 
-        // 页面加载时默认展开第一个章节
         document.addEventListener('DOMContentLoaded', function() {
-            const firstChapter = document.querySelector('.chapter-card');
-            if (firstChapter) {
-                firstChapter.classList.add('active');
-            }
+            const chapters = document.querySelectorAll('.chapter-card');
+            chapters.forEach(function(chapter, index) {
+                const header = chapter.querySelector('.chapter-header');
+                const expanded = chapter.classList.contains('active');
+                if (header) header.setAttribute('aria-expanded', String(expanded));
+                if (index === 0 && !document.querySelector('.chapter-card.active')) {
+                    chapter.classList.add('active');
+                    if (header) header.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            const navLinks = document.querySelectorAll('#navLinks a');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleNav(false);
+                });
+            });
+
+            expandChapterFromHash();
         });
+
+        window.addEventListener('hashchange', expandChapterFromHash);
     </script>
 </body>
 </html>
