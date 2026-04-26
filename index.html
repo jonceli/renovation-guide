@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>装修流程指南 | 避坑手册 + 施工标准</title>
+    <title>装修流程指南 | 19步完整攻略</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -17,24 +17,39 @@
             --text-muted: #666;
             --accent: #d4a574;
             --accent-light: #e8c9a0;
+            --accent-dark: #b8956a;
             --border: #333;
+            --danger: #e85d5d;
+            --success: #5dd39c;
+            --warning: #f5b642;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Noto Sans SC', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
+            min-height: 100vh;
         }
 
         /* 背景纹理 */
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: 
                 radial-gradient(ellipse at 20% 0%, rgba(212, 165, 116, 0.08) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 100%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
@@ -42,21 +57,80 @@
             z-index: 0;
         }
 
-        /* Hero 封面 */
+        /* 顶部导航 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero区域 */
         .hero {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
+            padding: 6rem 2rem 4rem;
             overflow: hidden;
         }
 
         .hero-bg {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: 
                 linear-gradient(180deg, transparent 0%, var(--bg-primary) 100%),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(212,165,116,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
@@ -84,7 +158,7 @@
 
         .hero h1 {
             font-family: 'Noto Serif SC', serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1.5rem;
@@ -104,1167 +178,1508 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
+            gap: 4rem;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
 
-        .stat-item { text-align: center; }
+        .stat-item {
+            text-align: center;
+        }
+
         .stat-number {
             font-family: 'Noto Serif SC', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--accent);
             display: block;
         }
+
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
-        .scroll-hint {
+        .scroll-indicator {
             position: absolute;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--text-muted);
             font-size: 0.8rem;
             animation: bounce 2s infinite;
         }
+
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(10px); }
         }
 
-        /* 搜索栏 */
-        .search-bar {
-            position: sticky;
-            top: 0;
-            background: rgba(15,15,15,0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 12px 16px;
-        }
-
-        .search-bar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-            white-space: nowrap;
-        }
-
-        #searchInput {
-            flex: 1;
-            max-width: 400px;
-            padding: 10px 16px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-
-        #searchInput:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        #searchCount {
-            font-size: 13px;
-            color: var(--text-muted);
-            white-space: nowrap;
-        }
-
         /* 主内容区 */
-        main {
+        .main-content {
             position: relative;
             z-index: 1;
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 16px 4rem;
+            padding: 2rem;
         }
 
         /* 章节卡片 */
-        .chapter {
+        .chapter-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 16px;
+            border-radius: 16px;
+            margin-bottom: 2rem;
             overflow: hidden;
-            transition: border-color 0.3s;
+            transition: all 0.4s ease;
         }
 
-        .chapter:hover {
+        .chapter-card:hover {
             border-color: rgba(212, 165, 116, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .chapter-header {
-            padding: 20px 24px;
-            cursor: pointer;
+            padding: 2rem;
             display: flex;
             align-items: center;
-            gap: 16px;
-            transition: background 0.2s;
+            gap: 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
         }
 
         .chapter-header:hover {
-            background: rgba(212, 165, 116, 0.03);
+            background: rgba(212, 165, 116, 0.02);
+        }
+
+        .chapter-card.active .chapter-header {
+            border-bottom-color: var(--border);
         }
 
         .chapter-number {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent) 0%, #b8956a 100%);
-            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Noto Serif SC', serif;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--bg-primary);
             flex-shrink: 0;
         }
 
-        .chapter-title-group { flex: 1; }
+        .chapter-title-group {
+            flex: 1;
+        }
+
         .chapter-title {
             font-family: 'Noto Serif SC', serif;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 600;
+            margin-bottom: 0.25rem;
         }
+
         .chapter-subtitle {
             color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 2px;
+            font-size: 0.9rem;
         }
 
         .chapter-toggle {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: var(--bg-secondary);
+            background: rgba(212, 165, 116, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s, background 0.2s;
-        }
-
-        .chapter.active .chapter-toggle {
-            transform: rotate(180deg);
+            transition: all 0.3s;
         }
 
         .chapter-toggle svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--text-secondary);
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .chapter-card.active .chapter-toggle svg {
+            transform: rotate(180deg);
         }
 
         .chapter-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.5s ease;
         }
 
-        .chapter.active .chapter-content {
+        .chapter-card.active .chapter-content {
             max-height: 10000px;
         }
 
-        .chapter-inner {
-            padding: 0 24px 24px;
-            border-top: 1px solid var(--border);
+        .chapter-body {
+            padding: 2rem;
         }
 
-        /* 子项 */
-        .section {
-            margin-top: 20px;
+        /* 内容网格 */
+        .content-grid {
+            display: grid;
+            gap: 1.5rem;
         }
 
-        .section-header {
-            padding: 12px 16px;
+        .info-box {
             background: var(--bg-secondary);
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            transition: background 0.2s;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
         }
 
-        .section-header:hover {
-            background: rgba(212, 165, 116, 0.08);
-        }
-
-        .section-toggle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--bg-card);
+        .info-box h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.3s;
-            font-size: 12px;
-            color: var(--text-secondary);
+            gap: 0.5rem;
         }
 
-        .section.active .section-toggle {
-            transform: rotate(180deg);
+        .info-box ul {
+            list-style: none;
         }
 
-        .section-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .section.active .section-content {
-            max-height: 5000px;
-        }
-
-        .section-inner {
-            padding: 16px;
+        .info-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
 
-        .section-inner ul {
-            margin: 12px 0;
-            padding-left: 20px;
+        .info-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
         }
 
-        .section-inner li {
-            margin: 8px 0;
+        /* 警告框 */
+        .warning-box {
+            background: rgba(232, 93, 93, 0.1);
+            border-left-color: var(--danger);
+        }
+
+        .warning-box h4 {
+            color: var(--danger);
+        }
+
+        .warning-box li::before {
+            color: var(--danger);
+        }
+
+        .success-box {
+            background: rgba(93, 211, 156, 0.1);
+            border-left-color: var(--success);
+        }
+
+        .success-box h4 {
+            color: var(--success);
+        }
+
+        .success-box li::before {
+            color: var(--success);
+        }
+
+        /* 套路卡片 */
+        .trap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .trap-card {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .trap-card:hover {
+            border-color: var(--danger);
+            background: rgba(232, 93, 93, 0.05);
+        }
+
+        .trap-title {
+            font-weight: 600;
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .trap-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
-        .highlight {
-            background: rgba(212, 165, 116, 0.2);
-            padding: 2px 4px;
-            border-radius: 3px;
+        /* 流程图 */
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            background: rgba(212, 165, 116, 0.15);
-            border-radius: 4px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-right: 6px;
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
-        /* 回到顶部 */
-        .back-to-top {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
+        .step-number {
+            width: 32px;
+            height: 32px;
             background: var(--accent);
             border-radius: 50%;
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--bg-primary);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .flow-step:last-child .step-content {
+            border-bottom: none;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 材料表格 */
+        .material-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .material-table th,
+        .material-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .material-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .material-table td {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .material-table tr:hover td {
+            background: rgba(212, 165, 116, 0.02);
+        }
+
+        /* 返回顶部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
-            transition: transform 0.2s, opacity 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
             z-index: 999;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
         .back-to-top:hover {
-            transform: scale(1.1);
+            transform: translateY(-3px);
         }
 
         .back-to-top svg {
             width: 24px;
             height: 24px;
-            stroke: var(--bg-primary);
+            color: var(--bg-primary);
         }
 
-        .back-to-top.visible {
-            display: flex;
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* 响应式 */
         @media (max-width: 768px) {
-            .hero-stats { gap: 2rem; }
-            .stat-number { font-size: 2rem; }
-            .chapter-header { padding: 16px; }
-            .chapter-number { width: 40px; height: 40px; font-size: 1rem; }
-            .chapter-title { font-size: 1rem; }
-            .logo { font-size: 1rem; }
-            #searchInput { max-width: 200px; }
+            .header {
+                padding: 1rem;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .chapter-header {
+                padding: 1.5rem;
+            }
+
+            .chapter-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .chapter-title {
+                font-size: 1.2rem;
+            }
+
+            .chapter-body {
+                padding: 1.5rem;
+            }
+
+            .trap-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* 搜索隐藏 */
-        .hidden { display: none !important; }
+        /* 动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chapter-card:nth-child(1) { animation-delay: 0.1s; }
+        .chapter-card:nth-child(2) { animation-delay: 0.15s; }
+        .chapter-card:nth-child(3) { animation-delay: 0.2s; }
+        .chapter-card:nth-child(4) { animation-delay: 0.25s; }
+        .chapter-card:nth-child(5) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">🏠 装修指南</a>
+            <button class="nav-toggle" onclick="toggleNav()">目录</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#chapter1">验房</a></li>
+                <li><a href="#chapter2">准备工作</a></li>
+                <li><a href="#chapter9">材料选购</a></li>
+                <li><a href="#chapter10">避坑指南</a></li>
+                <li><a href="#chapter20">设计资源</a></li>
+            </ul>
+        </div>
+    </header>
 
-<!-- Hero 封面 -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <span class="hero-badge">🏠 装修避坑完全指南</span>
-        <h1>装修流程<br>19步完整攻略</h1>
-        <p>从验房到软装，一站式避坑手册。<br>装修公司套路、施工标准、材料品牌，一文全掌握。</p>
-        <div class="hero-stats">
-            <div class="stat-item">
-                <span class="stat-number">30+</span>
-                <span class="stat-label">装修公司套路</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">50+</span>
-                <span class="stat-label">全屋定制避坑</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">20</span>
-                <span class="stat-label">完整章节</span>
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-badge">2026 完整版</span>
+            <h1>装修流程全攻略</h1>
+            <p>19个章节，从验房到竣工，涵盖装修公司套路、施工标准、验收规范，助你避坑省钱</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">20</span>
+                    <span class="stat-label">完整章节</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">120+</span>
+                    <span class="stat-label">避坑要点</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">60+</span>
+                    <span class="stat-label">材料标准</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="scroll-hint">↓ 向下滚动开始浏览</div>
-</section>
+        <div class="scroll-indicator">
+            <span>向下滚动</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
 
-<!-- 搜索栏 -->
-<div class="search-bar">
-    <div class="search-bar-inner">
-        <span class="logo">装修指南</span>
-        <input type="text" id="searchInput" placeholder="搜索关键词，如：套路、防水、验收...">
-        <span id="searchCount"></span>
-    </div>
-</div>
-
-<!-- 主内容 -->
-<main id="content"></main>
-
-<!-- 回到顶部 -->
-<div class="back-to-top" id="backToTop">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 15l-6-6-6 6"/>
-    </svg>
-</div>
-
-<script>
-const chapters = [
-    {
-        number: "01",
-        title: "新房毛坯验收",
-        subtitle: "验房流程与注意事项",
-        sections: [
-            {
-                title: "精装修房验房要点",
-                content: `<ul>
-                    <li><strong>强电弱电系统</strong>：检查配电箱、开关插座是否正常工作</li>
-                    <li><strong>门窗密封性</strong>：检查门窗是否密封良好，有无漏风漏水</li>
-                    <li><strong>下水管测试</strong>：倒水测试下水是否通畅</li>
-                    <li><strong>柜子验收</strong>：检查柜门是否平整，五金件是否齐全</li>
-                    <li><strong>空调烟机测试</strong>：测试空调、油烟机是否正常工作</li>
-                </ul>`
-            },
-            {
-                title: "新房毛坯验房",
-                content: `<ul>
-                    <li><strong>三书一证一表</strong>：住宅质量保证书、住宅使用说明书、建筑工程质量认定书、房地产开发建设项目竣工综合验收合格证、竣工验收备案表</li>
-                    <li><strong>门窗管道检查</strong>：检查门窗安装是否牢固，管道是否完好</li>
-                    <li><strong>墙面空鼓检测</strong>：用空鼓锤敲击墙面，检查是否有空鼓</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "02",
-        title: "装修前的准备工作",
-        subtitle: "装修公司套路 + 预算评估 + 开工必购",
-        sections: [
-            {
-                title: "装修公司套路合集",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 设计费全免 — 后期加项收费</li>
-                    <li><span class="tag">套路</span> 水电报低价 — 实际超出一倍</li>
-                    <li><span class="tag">套路</span> 零增项承诺 — 口头承诺无效</li>
-                    <li><span class="tag">套路</span> 送家电 — 成本已算入报价</li>
-                    <li><span class="tag">套路</span> 低价套餐 — 材料档次低</li>
-                    <li><span class="tag">套路</span> 免费升级 — 升级后仍有差价</li>
-                    <li><span class="tag">套路</span> 活动限时优惠 — 制造紧迫感</li>
-                    <li><span class="tag">套路</span> 全包省心 — 后期加项不断</li>
-                </ul>`
-            },
-            {
-                title: "开工前必购物品清单",
-                content: `<ul>
-                    <li>临时马桶、保护膜、钥匙管理盒</li>
-                    <li>玻璃胶、三角阀、止逆阀</li>
-                    <li>隔音棉、前置过滤器、地漏</li>
-                    <li>灭火器（施工现场必备）</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "03",
-        title: "选择靠谱装饰公司",
-        subtitle: "公司规模 / 服务保障 / 报价审核",
-        sections: [
-            {
-                title: "判断公司规模",
-                content: `<ul>
-                    <li>查看公司营业执照、资质证书</li>
-                    <li>考察办公环境、展厅规模</li>
-                    <li>了解公司在建工地数量和质量</li>
-                </ul>`
-            },
-            {
-                title: "审核报价明细",
-                tags: ["套路"],
-                content: `<ul>
-                    <li>检查是否有漏项（故意少报项目）</li>
-                    <li>确认材料品牌、型号、规格</li>
-                    <li>水电预估费用与实际差距范围</li>
-                    <li>增项比例是否写进合同</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "04",
-        title: "选择靠谱设计师",
-        subtitle: "设计师能力与沟通指南",
-        sections: [
-            {
-                title: "设计师能力评估",
-                content: `<ul>
-                    <li>查看过往案例（实地考察更佳）</li>
-                    <li>沟通设计理念是否契合</li>
-                    <li>了解项目跟进频率和服务内容</li>
-                    <li>确认效果图与施工图是否包含</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "05",
-        title: "完整设计方案标准",
-        subtitle: "平面图 / 效果图 / 施工图清单",
-        sections: [
-            {
-                title: "施工图清单",
-                content: `<ul>
-                    <li>原始户型图</li>
-                    <li>拆除/新建墙体定位图</li>
-                    <li>平面布置图</li>
-                    <li>天花造型图</li>
-                    <li>开关插座布置图</li>
-                    <li>给排水系统图</li>
-                    <li>电路系统图</li>
-                    <li>橱柜/衣柜详图</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "06",
-        title: "签合同注意事项",
-        subtitle: "付款节点 / 增项条款 / 材料约定",
-        sections: [
-            {
-                title: "合同关键条款",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><strong>付款节点</strong>：首期≤30%，尾款≥10%</li>
-                    <li><strong>增项比例</strong>：约定增项不超过总价的5%</li>
-                    <li><strong>工期约定</strong>：明确开工/竣工日期及违约责任</li>
-                    <li><strong>材料约定</strong>：品牌、型号、规格写进合同</li>
-                    <li><strong>口头承诺</strong>：一切以书面为准，口头无效</li>
-                </ul>`
-            },
-            {
-                title: "辅材规格型号标准",
-                content: `<ul>
-                    <li><strong>防水材料</strong>：刚性JC/T 2090、柔性GB/T 23445</li>
-                    <li><strong>木工材料</strong>：石膏板、龙骨、木工板、白乳胶品牌约定</li>
-                    <li><strong>瓦工材料</strong>：瓷砖胶、背胶、水泥标号</li>
-                    <li><strong>油工材料</strong>：界面剂、石膏粉、腻子粉、乳胶漆品牌</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "07",
-        title: "开工前的准备工作",
-        subtitle: "装修许可证 / 消防设备 / 垃圾清运",
-        sections: [
-            {
-                title: "开工准备清单",
-                content: `<ul>
-                    <li>办理装修许可证</li>
-                    <li>配备消防设备（灭火器）</li>
-                    <li>确认垃圾清运方式和费用</li>
-                    <li>与邻居打好招呼</li>
-                    <li>保护公共区域（电梯、走廊）</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "08",
-        title: "拆除阶段施工",
-        subtitle: "拆除费用 / 交底细节 / 禁拆事项",
-        sections: [
-            {
-                title: "拆除交底细节",
-                content: `<ul>
-                    <li>确认拆改范围（承重墙禁止拆除）</li>
-                    <li>阳台处理方案</li>
-                    <li>门洞调整确认</li>
-                    <li>垃圾清运方式</li>
-                    <li>成品保护措施</li>
-                    <li>地暖打压检查</li>
-                </ul>`
-            },
-            {
-                title: "⚠️ 承重墙禁止拆除",
-                content: `<ul>
-                    <li>承重墙、剪力墙、配重墙严禁拆除</li>
-                    <li>拆除前必须确认原始图纸</li>
-                    <li>违规拆除可能导致结构安全隐患</li>
-                    <li>物业备案后方可施工</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "09",
-        title: "大件设备安装",
-        subtitle: "地暖 / 中央空调 / 防盗门 / 智能家居",
-        sections: [
-            {
-                title: "地暖安装流程",
-                content: `<ul>
-                    <li>地面找平 → 铺设保温板 → 铺设反射膜</li>
-                    <li>铺设钢丝网 → 盘管 → 安装分集水器</li>
-                    <li>压力测试 → 混凝土回填 → 安装壁挂炉</li>
-                </ul>`
-            },
-            {
-                title: "中央空调安装时机",
-                content: `<ul>
-                    <li>水电改造阶段进场</li>
-                    <li>吊顶封板前完成安装</li>
-                    <li>确认出风口、回风口位置</li>
-                </ul>`
-            },
-            {
-                title: "防盗门安装时机",
-                content: `<ul>
-                    <li>瓦工进场前安装</li>
-                    <li>注意门洞尺寸预留</li>
-                    <li>确认开门方向和锁具位置</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "10",
-        title: "装修公司套路大全",
-        subtitle: "30+ 种套路详解",
-        sections: [
-            {
-                title: "装修报价套路",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 低报价吸引 — 后期增项不断</li>
-                    <li><span class="tag">套路</span> 漏报项目 — 故意少报后期加钱</li>
-                    <li><span class="tag">套路</span> 材料模糊 — 只写品牌不写型号</li>
-                    <li><span class="tag">套路</span> 工艺不明确 — 后期要求加钱升级</li>
-                </ul>`
-            },
-            {
-                title: "全屋定制衣柜套路",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 五金另收费 — 铰链、滑轨单独算</li>
-                    <li><span class="tag">套路</span> 抽屉另收费 — 超出数量加钱</li>
-                    <li><span class="tag">套路</span> 见光板另收费 — 侧面需加钱</li>
-                    <li><span class="tag">套路</span> 灯带另收费 — 柜内灯带加钱</li>
-                    <li><span class="tag">套路</span> 板材升级 — 建议升级环保板</li>
-                    <li><span class="tag">套路</span> 非标尺寸 — 异形加收费用</li>
-                </ul>`
-            },
-            {
-                title: "橱柜定制套路",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 台面厚度 — 标配薄，升级加钱</li>
-                    <li><span class="tag">套路</span> 拉篮另收费 — 碗篮、调味篮单独算</li>
-                    <li><span class="tag">套路</span> 包管另收费 — 燃气管道包管加钱</li>
-                    <li><span class="tag">套路</span> 高低台另收费 — 符合人体工学设计加钱</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "11",
-        title: "防水施工",
-        subtitle: "避坑细节 / 材料标准 / 验收规范",
-        sections: [
-            {
-                title: "防水避坑细节",
-                content: `<ul>
-                    <li>卫生间墙面防水高度≥1.8m</li>
-                    <li>淋浴区墙面防水高度≥1.8m</li>
-                    <li>厨房地面防水高度≥0.3m</li>
-                    <li>阳台地面必须做防水</li>
-                    <li>防水施工前基层必须清理干净</li>
-                    <li>阴阳角、管道根部需加强处理</li>
-                </ul>`
-            },
-            {
-                title: "防水材料选购标准",
-                content: `<ul>
-                    <li><strong>刚性防水</strong>：JC/T 2090 标准</li>
-                    <li><strong>柔性防水</strong>：GB/T 23445 标准</li>
-                    <li>厨卫推荐：柔性防水涂料</li>
-                    <li>阳台推荐：刚性+柔性结合</li>
-                </ul>`
-            },
-            {
-                title: "防水验收标准",
-                content: `<ul>
-                    <li><strong>闭水试验</strong>：蓄水深度≥20mm，时间≥24小时</li>
-                    <li>检查楼下是否有渗漏</li>
-                    <li>拍照留存验收记录</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "12",
-        title: "木工施工",
-        subtitle: "避坑细节 / 材料品牌 / 验收标准",
-        sections: [
-            {
-                title: "木工避坑细节",
-                content: `<ul>
-                    <li>吊顶采用双层石膏板</li>
-                    <li>转角处采用L型整板（防裂）</li>
-                    <li>石膏板接缝处做V型槽处理</li>
-                    <li>龙骨间距：主龙骨≤1.2m，副龙骨≤0.4m</li>
-                    <li>自攻螺丝间距≤170mm</li>
-                    <li>钉眼需做防锈处理</li>
-                </ul>`
-            },
-            {
-                title: "板材环保等级",
-                content: `<ul>
-                    <li><strong>E1级</strong>：甲醛释放量≤0.124mg/m³</li>
-                    <li><strong>E0级</strong>：甲醛释放量≤0.050mg/m³</li>
-                    <li><strong>ENF级</strong>：甲醛释放量≤0.025mg/m³（无醛添加）</li>
-                    <li>推荐使用E0级或ENF级板材</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "13",
-        title: "瓦工施工",
-        subtitle: "避坑细节 / 材料品牌 / 验收标准",
-        sections: [
-            {
-                title: "瓦工避坑细节",
-                content: `<ul>
-                    <li>砌砖墙需植筋加固</li>
-                    <li>卫生间回填推荐陶粒或发泡水泥</li>
-                    <li>瓷砖铺贴前需做背胶处理</li>
-                    <li>墙地砖对缝更美观</li>
-                    <li>地漏处采用回字形或旋风式铺贴</li>
-                    <li>瓷砖留缝≥1.5mm（美缝需要）</li>
-                </ul>`
-            },
-            {
-                title: "瓦工验收标准",
-                content: `<ul>
-                    <li>空鼓率：墙面≤5%，地面≤3%</li>
-                    <li>阴阳角方正度≤3mm</li>
-                    <li>表面平整度≤3mm/2m</li>
-                    <li>接缝高低差≤0.5mm</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "14",
-        title: "油工施工",
-        subtitle: "避坑细节 / 材料品牌 / 验收标准",
-        sections: [
-            {
-                title: "油工避坑细节",
-                content: `<ul>
-                    <li>批刮腻子前需涂刷墙固</li>
-                    <li>石膏板钉眼需涂防锈漆</li>
-                    <li>接缝处需贴绷带或网格布</li>
-                    <li>新老墙体交接处需挂网</li>
-                    <li>腻子批刮不少于2遍</li>
-                    <li>打磨后需清理浮尘再刷漆</li>
-                </ul>`
-            },
-            {
-                title: "乳胶漆涂刷标准",
-                content: `<ul>
-                    <li>一底两面（底漆1遍+面漆2遍）</li>
-                    <li>涂刷前需充分搅拌</li>
-                    <li>第一遍干透后才能刷第二遍</li>
-                    <li>色漆需一次调够量（避免色差）</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "15",
-        title: "主材安装顺序",
-        subtitle: "木地板 / 室内门 / 洁具 / 灯具",
-        sections: [
-            {
-                title: "主材安装顺序",
-                content: `<ul>
-                    <li><strong>第一步</strong>：木地板安装</li>
-                    <li><strong>第二步</strong>：室内门、踢脚线安装</li>
-                    <li><strong>第三步</strong>：灯具、开关插座安装</li>
-                    <li><strong>第四步</strong>：空调、热水器、油烟机安装</li>
-                    <li><strong>第五步</strong>：洁具安装（马桶、花洒、浴室柜）</li>
-                    <li><strong>第六步</strong>：窗帘安装</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "16",
-        title: "软装阶段",
-        subtitle: "开荒保洁 / 家具进场 / 验收入住",
-        sections: [
-            {
-                title: "开荒保洁要点",
-                content: `<ul>
-                    <li>清理装修残留垃圾</li>
-                    <li>擦拭玻璃、门窗</li>
-                    <li>清洁厨卫设施</li>
-                    <li>地面清洁打蜡</li>
-                </ul>`
-            },
-            {
-                title: "家具进场顺序",
-                content: `<ul>
-                    <li>大件家具先入场（沙发、床、衣柜）</li>
-                    <li>小件家具后入场（茶几、床头柜）</li>
-                    <li>装饰品最后入场</li>
-                    <li>注意保护地板和墙面</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "17",
-        title: "竣工验收",
-        subtitle: "水电验收 / 木工验收 / 瓦工验收",
-        sections: [
-            {
-                title: "水电验收标准",
-                content: `<ul>
-                    <li>水路打压测试（0.8MPa，30分钟不掉压）</li>
-                    <li>电路绝缘测试</li>
-                    <li>插座接线正确（左零右火上地）</li>
-                    <li>开关控制正确</li>
-                </ul>`
-            },
-            {
-                title: "整体验收清单",
-                content: `<ul>
-                    <li>墙面：无开裂、无空鼓、颜色均匀</li>
-                    <li>地面：无空鼓、坡度正确、对缝整齐</li>
-                    <li>木作：柜门平整、五金件齐全</li>
-                    <li>门窗：开关顺畅、密封良好</li>
-                    <li>洁具：安装牢固、排水通畅</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "18",
-        title: "环保国标汇总",
-        subtitle: "甲醛 / TVOC / 苯系物标准",
-        sections: [
-            {
-                title: "室内空气质量标准",
-                content: `<ul>
-                    <li><strong>甲醛</strong>：≤0.08mg/m³（GB/T 18883）</li>
-                    <li><strong>TVOC</strong>：≤0.60mg/m³</li>
-                    <li><strong>苯</strong>：≤0.11mg/m³</li>
-                    <li><strong>氨</strong>：≤0.20mg/m³</li>
-                    <li><strong>氡</strong>：≤400Bq/m³</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "19",
-        title: "装修增项漏项汇总",
-        subtitle: "常见增项项目清单",
-        sections: [
-            {
-                title: "水电增项",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 电线米数超出预估</li>
-                    <li><span class="tag">套路</span> 水管走向变更</li>
-                    <li><span class="tag">套路</span> 开槽费另算</li>
-                    <li><span class="tag">套路</span> 承重墙开槽加钱</li>
-                </ul>`
-            },
-            {
-                title: "木工增项",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 吊顶造型复杂加钱</li>
-                    <li><span class="tag">套路</span> 窗帘盒另算</li>
-                    <li><span class="tag">套路</span> 灯槽另算</li>
-                </ul>`
-            },
-            {
-                title: "瓦工增项",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 瓷砖规格小加钱</li>
-                    <li><span class="tag">套路</span> 异形铺贴加钱</li>
-                    <li><span class="tag">套路</span> 腰线、花片另算</li>
-                </ul>`
-            },
-            {
-                title: "油工增项",
-                tags: ["套路"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> 墙面找平另算</li>
-                    <li><span class="tag">套路</span> 色漆加钱</li>
-                    <li><span class="tag">套路</span> 特殊效果漆加钱</li>
-                </ul>`
-            }
-        ]
-    },
-    {
-        number: "20",
-        title: "材料选购指南",
-        subtitle: "门 / 窗 / 地暖 / 空调 / 水系统 / 瓷砖 / 卫浴 / 全屋定制 / 智能家居 / 集成灶 / 灯具 / 美缝 / 软装 / 五金 / 电梯",
-        sections: [
-            {
-                title: "01 室内门知识",
-                content: `<ul>
-                    <li><strong>木门选购</strong>：木门以其天然质感和美观耐用而受到青睐，是室内门的常见选择</li>
-                    <li><strong>选购建议</strong>：选择室内门时，应考虑材质、尺寸、风格与预算，确保美观实用且符合家居整体设计</li>
-                    <li><strong>木门品牌</strong>：关注市场上知名木门品牌，强调其在室内门领域的地位和影响力</li>
-                </ul>`
-            },
-            {
-                title: "01 防盗门知识",
-                content: `<ul>
-                    <li><strong>防盗门选购</strong>：选购防盗门时应考虑材质、锁具安全性及品牌信誉，确保家庭安全</li>
-                    <li><strong>锁芯等级</strong>：优先选择C级以上的锁芯，以确保安全</li>
-                    <li><strong>热门对比</strong>：分析当前市场上流行的防盗门品牌和型号，比较安全性能和价格</li>
-                    <li><strong>智能锁</strong>：精选热门智能锁品牌，提供购买建议，帮助消费者明智选择</li>
-                </ul>`
-            },
-            {
-                title: "02 窗户·断桥铝品牌",
-                content: `<ul>
-                    <li><strong>普通塑钢窗</strong>：性价比高，单平米200-500元，密封性和保温性能满足基础需求</li>
-                    <li><strong>断桥铝窗</strong>：中端主流款，单平米500-1200元，隔热隔音效果出众，耐用性强</li>
-                    <li><strong>高端断桥铝</strong>：单平米1200元以上，定制化程度高，隔热、隔音、抗风压性能拉满</li>
-                </ul>`
-            },
-            {
-                title: "02 窗户避坑与玻璃知识",
-                tags: ["避坑"],
-                content: `<ul>
-                    <li><span class="tag">避坑</span> 封阳台换窗户的三个底线：选购合格钢化玻璃</li>
-                    <li>选择3C认证钢化玻璃：闹市区选双层夹胶，保温选双层中空，北方选三层中空</li>
-                    <li>密封胶执行标准：GB/T 14683-2017（建筑密封胶核心国标）、JC/T 485-2017（幕墙用耐候密封胶）</li>
-                    <li>环保标准：GB 18583-2008限制甲醛、苯等有害物质含量</li>
-                    <li>窗户横切面结构：关注框体、玻璃、密封层等多层关键组成部分</li>
-                    <li>合同细节：明确型材品牌、壁厚、玻璃配置、五金件品牌</li>
-                </ul>`
-            },
-            {
-                title: "03 地暖知识",
-                content: `<ul>
-                    <li><strong>地暖类型</strong>：水地暖和电地暖两大类</li>
-                    <li><strong>水地暖</strong>：安装成本高，但使用成本低，适合大面积房屋</li>
-                    <li><strong>电地暖</strong>：安装成本低，但使用成本高，升温快，可能有电磁辐射，功率大易跳闸</li>
-                    <li><strong>地暖管品牌</strong>：从口碑、性能、售后等维度筛选适配的优质品牌</li>
-                    <li><strong>全屋地暖选购建议</strong>：涵盖管材、温控、辅材等多维度实用选购要点</li>
-                </ul>`
-            },
-            {
-                title: "04 空调及新风设备",
-                content: `<ul>
-                    <li><strong>中央空调品牌</strong>：关注市场上知名品牌，比较性能与特点</li>
-                    <li><strong>氟机和水机区别</strong>：在工作原理和性能上有所不同，按需选择</li>
-                    <li><strong>空调辅料避坑</strong>：选购空调辅料时需注意质量，避免常见陷阱</li>
-                    <li><strong>中央空调验收</strong>：确保设备正常运行的关键步骤</li>
-                    <li><strong>分体空调</strong>：选购要点包括能效比、制冷量、品牌信誉</li>
-                    <li><strong>新风系统</strong>：能改善室内空气质量，引入新鲜空气，排出污浊空气</li>
-                    <li><strong>顶送顶回与地送顶回</strong>：新风系统管道布置的两种方式</li>
-                    <li><strong>中央空调 vs 风管机</strong>：根据预算和需求选择</li>
-                </ul>`
-            },
-            {
-                title: "05 水系统·前置净水软水设备",
-                content: `<ul>
-                    <li><strong>水系统搭配建议</strong>：依据户型、用水需求等确定前置净水与软水设备组合</li>
-                    <li><strong>前置过滤器</strong>：了解基础知识、安装时间及选购标准</li>
-                    <li><strong>净水设备</strong>：选择时需考虑家庭用水量、水质及预算，确保健康与经济双重效益</li>
-                    <li><strong>软水设备</strong>：通过去除水中钙镁离子，减少水垢，提高生活用水质量</li>
-                    <li><strong>水系统布局</strong>：前置净水+软水设备处理，确保水质清洁、软化</li>
-                </ul>`
-            },
-            {
-                title: "06 石材瓷砖及木地板",
-                content: `<ul>
-                    <li><strong>石材分类</strong>：天然石、大理石、花岗石、人造石、石英石、岩板各有特点</li>
-                    <li><strong>大理石价格参考</strong>：天然奢石2000元起，玉石约1000元，大理石300-600元，人造大理石约200元</li>
-                    <li><strong>瓷砖分类</strong>：抛光砖、釉面砖、仿古砖等，一线大品牌 > 二线广东砖(30-69元/片) > 三线广东砖</li>
-                    <li><strong>买广东砖20个步骤</strong>：进店后明确需求，测试瓷砖质量，核对包装信息，谈价格并确保广东产地</li>
-                    <li><strong>瓷砖进场验收</strong>：检查质量、尺寸、色差，确保无破损、缺角</li>
-                    <li><strong>木地板类型</strong>：实木地板700-1500元，强化复合地板150-300元，实木复合地板300-500元</li>
-                </ul>`
-            },
-            {
-                title: "07 卫浴知识",
-                content: `<ul>
-                    <li><strong>卫浴品牌</strong>：涵盖国际大牌、本土优质品牌，按预算与需求筛选</li>
-                    <li><strong>智能马桶</strong>：需符合GB/T 23131-2019标准，选购时考虑型号价格和功能</li>
-                    <li><strong>普通马桶</strong>：注意节水标准GB/T 31436-2015，考虑购买建议</li>
-                    <li><strong>花洒选购技巧</strong>：关注出水模式、材质、恒温功能</li>
-                    <li><strong>浴室柜</strong>：高度应根据使用者身高和使用习惯确定，根据空间大小、材质、设计和预算选择</li>
-                    <li><strong>防霉玻璃胶</strong>：执行标准GB 18583-2008，限制甲醛、苯等有害物质含量</li>
-                </ul>`
-            },
-            {
-                title: "08 全屋定制知识",
-                tags: ["避坑"],
-                content: `<ul>
-                    <li><span class="tag">套路</span> <strong>衣柜套路</strong>：五金小件额外费用、抽屉数量套路、内部格局设计额外费、铰链滑轨套路（国产选悍高/东泰，进口选海蒂诗/百隆）</li>
-                    <li><span class="tag">套路</span> <strong>拉直器套路</strong>：国产柜门超1米需装拉直器防变形，定制时问清费用及质保</li>
-                    <li><span class="tag">套路</span> <strong>板材数量套路</strong>：问清投影面积计算、隔板和板材数量限制及超限收费</li>
-                    <li><span class="tag">套路</span> <strong>灯带套路</strong>：定制前问清楚展示柜中灯带是否赠送，不送的话报价几何</li>
-                    <li><span class="tag">套路</span> <strong>橱柜套路</strong>：吊柜高低和进深、石英石台面厚度、抽屉多收费、五金品牌更换、辅助造型、柜体柜门、额外收费项目（封板、衬板、防潮锡箔纸等）</li>
-                    <li><strong>如何避开假板材</strong>：找官方客服核实品牌、看侧边防伪码、紫外线灯照暗标、问敢不敢签假一罚十合同、使用MDI胶的板材可达ENF级</li>
-                    <li><strong>定制衣柜尺寸</strong>：厚度至少60公分，挂衣杆与隔板间留4-6公分，位置向内偏移1公分</li>
-                    <li><strong>一线品牌</strong>：索菲亚、欧派、顾家、金牌、志邦、尚品、好莱客、诗尼曼、维意</li>
-                    <li><strong>二线品牌</strong>：兔宝宝、莫干山、顶固、科凡、雪宝（约800元，推荐万华禾香板、鲁丽欧松板）</li>
-                    <li><strong>全屋定制付款方式</strong>：建议分阶段付款，避免一次性付清</li>
-                </ul>`
-            },
-            {
-                title: "09 全屋智能知识",
-                content: `<ul>
-                    <li><strong>玄关</strong>：小区可视门禁与智能中控屏，支持外接喇叭和Zigbee控制</li>
-                    <li><strong>门禁</strong>：智能门锁与感应器，支持多种解锁方式</li>
-                    <li><strong>卫生间</strong>：智能开关和人体感应器，门窗磁感应器需电池供电</li>
-                    <li><strong>客厅/阳台</strong>：智能开关、音箱、感应器、扫地机器人、空气净化器</li>
-                    <li><strong>卧室</strong>：智能开关、人体感应器、温湿度感应器、电动窗帘、空调温控、WII红外遥控器、智能音箱、SOS一键报警器</li>
-                    <li><strong>厨房</strong>：漏水感应器、烟雾报警器、燃气泄漏探测器、智能开关、推窗器</li>
-                    <li><strong>施工全流程</strong>：前期勘测→设备安装调试→验收交付</li>
-                    <li><strong>水电预留</strong>：电源插座预留、线路管路预留（PVC穿线管）、水位点位预留</li>
-                    <li><strong>品牌推荐</strong>：小米智能（高性价比）、绿米Aqara（全屋定制）、华为鸿蒙智联（跨设备协同）</li>
-                    <li><strong>开关布线</strong>：单火开关（无需额外布线）、零火开关（稳定性更优）</li>
-                </ul>`
-            },
-            {
-                title: "10 集成灶知识",
-                content: `<ul>
-                    <li><strong>集成灶类型</strong>：蒸烤一体、消毒柜款、储物柜款等</li>
-                    <li><strong>集成灶 vs 普通灶</strong>：集成灶节省空间、吸烟效果好，但价格较高、维修复杂</li>
-                    <li><strong>最纠结的10个问题</strong>：包括安装尺寸、排烟方式、维修便利性等</li>
-                    <li><strong>购买指南</strong>：关注风量、风压、火力、能效等级等核心参数</li>
-                </ul>`
-            },
-            {
-                title: "11 灯具知识",
-                content: `<ul>
-                    <li><strong>筒灯射灯区别</strong>：筒灯光线均匀分散，射灯光线集中聚焦</li>
-                    <li><strong>选购攻略</strong>：考虑照明效果、节能性、安装便捷性及与家居风格的协调性</li>
-                    <li><strong>灯具品牌</strong>：欧普照明（性价比+耐用）、雷士照明（轻奢设计）、飞利浦（智能+节能）</li>
-                    <li><strong>全屋灯具布局</strong>：按空间分区设计照明方案</li>
-                    <li><strong>线性灯安装方式</strong>：嵌入式、明装、吊装等多种方式</li>
-                </ul>`
-            },
-            {
-                title: "12 美缝剂",
-                content: `<ul>
-                    <li><strong>美缝剂分类</strong>：包括环氧彩砂、聚脲美缝、水性美缝等类型</li>
-                    <li><strong>美缝剂品牌</strong>：选择口碑好的知名品牌，确保质量与性能</li>
-                    <li><strong>执行标准</strong>：美缝剂产品需符合特定标准，确保质量满足行业要求</li>
-                    <li><strong>选购指南</strong>：考虑颜色搭配、耐污性、耐磨性、环保性</li>
-                </ul>`
-            },
-            {
-                title: "13 软装知识",
-                content: `<ul>
-                    <li><strong>窗帘</strong>：考虑材质、颜色、尺寸和功能，以匹配家居风格和需求</li>
-                    <li><strong>窗帘配件</strong>：选择合适的轨道、挂钩等，提升实用性和美观度</li>
-                    <li><strong>纱帘知识</strong>：了解不同纱帘类型，掌握选购技巧</li>
-                    <li><strong>壁纸壁布</strong>：根据风格和预算选择合适材质</li>
-                </ul>`
-            },
-            {
-                title: "14 五金小件重点",
-                content: `<ul>
-                    <li><strong>地漏</strong>：选择时考虑材质、排水效率和防臭功能；下水类型包括直通式、水封式、自清式等</li>
-                    <li><strong>止逆阀</strong>：分类明确，安装时注意方向和密封性</li>
-                    <li><strong>角阀</strong>：选购时考虑材质、耐压、耐腐蚀性及品牌信誉</li>
-                    <li><strong>角阀数量</strong>：根据实际需求确定，厨卫各需不同数量</li>
-                </ul>`
-            },
-            {
-                title: "15 家用电梯",
-                content: `<ul>
-                    <li><strong>电梯类型</strong>：曳引式、液压式、螺杆式等，按户型和需求选择</li>
-                    <li><strong>电梯品牌</strong>：奥的斯（美国百年品牌，安全稳定+智能操控）、蒂森克虏伯（德国高端，个性化定制）</li>
-                    <li><strong>选购避坑</strong>：关注井道尺寸、载重、速度、安全装置、维保服务等关键参数</li>
-                </ul>`
-            }
-        ]
-    }
-];
-
-// 渲染内容
-function render() {
-    const main = document.getElementById('content');
-    let html = '';
-    
-    chapters.forEach((ch, i) => {
-        html += `
-            <div class="chapter" data-index="${i}">
-                <div class="chapter-header" onclick="toggleChapter(${i})">
-                    <div class="chapter-number">${ch.number}</div>
-                    <div class="chapter-title-group">
-                        <div class="chapter-title">${ch.title}</div>
-                        <div class="chapter-subtitle">${ch.subtitle}</div>
-                    </div>
-                    <div class="chapter-toggle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </div>
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 第1章：验房 -->
+        <article class="chapter-card fade-in" id="chapter1">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">01</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">验房的注意事项</h2>
+                    <p class="chapter-subtitle">精装修房验收 · 新房毛坯验收</p>
                 </div>
-                <div class="chapter-content">
-                    <div class="chapter-inner">
-                        ${ch.sections.map((sec, j) => `
-                            <div class="section" data-index="${j}">
-                                <div class="section-header" onclick="toggleSection(event, ${i}, ${j})">
-                                    <span>${sec.title}</span>
-                                    <span class="section-toggle">▼</span>
-                                </div>
-                                <div class="section-content">
-                                    <div class="section-inner">${sec.content}</div>
-                                </div>
-                            </div>
-                        `).join('')}
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="content-grid">
+                        <div class="info-box">
+                            <h4>📋 精装修房验收要点</h4>
+                            <ul>
+                                <li><strong>强电系统验收</strong> - 检测插座安全性能</li>
+                                <li><strong>弱电系统验收</strong> - 网络电视线路检查</li>
+                                <li><strong>门窗验收</strong> - 密封性、锁具、玻璃类型及破损情况</li>
+                                <li><strong>墙面检查</strong> - 空鼓锤敲瓷砖，木地板平整度，踢脚线安装</li>
+                                <li><strong>下水管检查</strong> - 纸巾测试接头漏水，放水查看通畅</li>
+                                <li><strong>柜子验收</strong> - 封边、层板钉子、铰链松动</li>
+                                <li><strong>空调功能</strong> - 制冷制热、无漏水漏气</li>
+                                <li><strong>烟机效果</strong> - 排烟效果测试</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>🏠 新房毛坯验收</h4>
+                            <ul>
+                                <li><strong>三书一证一表</strong> - 必备文件齐全</li>
+                                <li><strong>门窗检查</strong> - 等级、周边漏水、玻璃开裂</li>
+                                <li><strong>楼上漏水</strong> - 重点检查卫生间、阳台</li>
+                                <li><strong>管道漏水</strong> - 存水弯、阳台雨水管、防水地漏</li>
+                                <li><strong>厨房烟道</strong> - 排烟是否通畅</li>
+                                <li><strong>墙面验收</strong> - 空鼓、平整度</li>
+                            </ul>
+                        </div>
+                        <div class="info-box warning-box">
+                            <h4>⚠️ 避坑提醒</h4>
+                            <ul>
+                                <li>避免物业推荐验房师，可能存在利益关联</li>
+                                <li>空鼓锤几块钱一个，自己全屋走一遍</li>
+                                <li>重点查看手盆打胶缝、窗户飘窗漏水</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        `;
-    });
-    
-    main.innerHTML = html;
-}
+        </article>
 
-function toggleChapter(i) {
-    const chapter = document.querySelector(`.chapter[data-index="${i}"]`);
-    chapter.classList.toggle('active');
-}
+        <!-- 第2章：装修前准备 -->
+        <article class="chapter-card fade-in" id="chapter2">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">02</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">装修前的准备工作</h2>
+                    <p class="chapter-subtitle">装修公司套路合集 · 预算评估 · 自装/半包/全包</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="info-box warning-box">
+                        <h4>🚨 装修公司套路大全（30+种）</h4>
+                    </div>
+                    <div class="trap-grid">
+                        <div class="trap-card">
+                            <div class="trap-title">设计费全免</div>
+                            <div class="trap-desc">诱导购买指定材料获取回扣，否则设计师不负责</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">水电报低价</div>
+                            <div class="trap-desc">以低价吸引客户，最终费用远超预期</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">零增项承诺</div>
+                            <div class="trap-desc">预算清单隐藏诸多未包含项目，后期加价</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">七天退款</div>
+                            <div class="trap-desc">拖延时间，退款困难重重</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">拎包入住</div>
+                            <div class="trap-desc">不包括窗帘、软装和活动家具，需额外付费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">工程量少算</div>
+                            <div class="trap-desc">故意少算工程量，超出部分额外收费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">送家电</div>
+                            <div class="trap-desc">赠送品质差，升级后价格与市场相当</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">面积套路</div>
+                            <div class="trap-desc">按更大面积收费，多出部分作为利润</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">铺瓷砖加价</div>
+                            <div class="trap-desc">门石、波导线、薄贴、对缝均额外收费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">吊顶加价</div>
+                            <div class="trap-desc">加装中央空调后，原预算不包含额外吊顶</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">材料选择套路</div>
+                            <div class="trap-desc">以无货为由迫使加钱换材料，或用低质辅材</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">地面找平</div>
+                            <div class="trap-desc">以地面不平为由增加找平厚度加收费用</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">洁具全包</div>
+                            <div class="trap-desc">限制品牌选择，跨品牌需额外付费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">橱柜全包</div>
+                            <div class="trap-desc">地柜够但吊柜不足，需额外付费增加</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">衣柜全包</div>
+                            <div class="trap-desc">故意缩短尺寸，超出的加钱，不含挂衣杆抽屉</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">工程管理费</div>
+                            <div class="trap-desc">收取5%-10%管理费，实则可协商减免</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">付款套路</div>
+                            <div class="trap-desc">装修前付50%，水电后增至80%，问题暴露难约束</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">征集样板间</div>
+                            <div class="trap-desc">催促交定金，价格和工艺未必有优势</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">砸金蛋</div>
+                            <div class="trap-desc">营销手段，诱导冲动交定金，退定困难</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">口头承诺</div>
+                            <div class="trap-desc">签后难以兑现，合同外承诺无法律依据</div>
+                        </div>
+                    </div>
 
-function toggleSection(e, ci, si) {
-    e.stopPropagation();
-    const section = document.querySelector(`.chapter[data-index="${ci}"] .section[data-index="${si}"]`);
-    section.classList.toggle('active');
-}
+                    <div class="info-box warning-box" style="margin-top: 2rem;">
+                        <h4>🚨 装修中假货最多的5个材料</h4>
+                    </div>
+                    <div class="trap-grid">
+                        <div class="trap-card">
+                            <div class="trap-title">石英石台面</div>
+                            <div class="trap-desc">用钥匙划，真石英石不留痕；假的是树脂+石粉，易渗色</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">水槽</div>
+                            <div class="trap-desc">看钢印SUS304，假的标SVS304或DUS304，用磁铁吸会粘</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">广东瓷砖</div>
+                            <div class="trap-desc">查3C认证标志和放射性水平A类标识，无认证慎买</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">潜水艇地漏</div>
+                            <div class="trap-desc">正品包装有防伪标签，假货型号模糊，阀芯易卡</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">马桶</div>
+                            <div class="trap-desc">正品釉面光滑、冲水静音，假货釉面粗糙、易挂污</div>
+                        </div>
+                    </div>
 
-// 搜索功能
-const searchInput = document.getElementById('searchInput');
-const searchCount = document.getElementById('searchCount');
+                    <div class="info-box" style="margin-top: 2rem;">
+                        <h4>🎯 装修避坑三大核心</h4>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <div class="step-title">水电改造</div>
+                                    <div class="step-desc">提前规划点位，用知名品牌材料，完工后必须做打压试验</div>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <div class="step-title">瓷砖铺贴</div>
+                                    <div class="step-desc">确认瓷砖平整度，预留伸缩缝，选经验丰富的瓦工师傅</div>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <div class="step-title">墙面刷漆</div>
+                                    <div class="step-desc">基层处理到位，腻子刮平整，选环保漆，涂刷均匀无流坠</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-searchInput.addEventListener('input', function() {
-    const query = this.value.toLowerCase().trim();
-    
-    if (!query) {
-        document.querySelectorAll('.chapter').forEach(ch => ch.classList.remove('hidden'));
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('hidden'));
-        searchCount.textContent = '';
-        return;
-    }
-    
-    let matchCount = 0;
-    
-    chapters.forEach((ch, i) => {
-        const chapterEl = document.querySelector(`.chapter[data-index="${i}"]`);
-        const chText = (ch.title + ch.subtitle).toLowerCase();
-        let chapterMatch = chText.includes(query);
-        
-        ch.sections.forEach((sec, j) => {
-            const secEl = chapterEl.querySelector(`.section[data-index="${j}"]`);
-            const secText = (sec.title + sec.content).toLowerCase();
-            const secMatch = secText.includes(query);
-            
-            if (secMatch) {
-                secEl.classList.remove('hidden');
-                chapterMatch = true;
-                matchCount++;
+                    <div class="info-box" style="margin-top: 2rem;">
+                        <h4>💰 100平自装基础装修参考费用</h4>
+                        <table class="material-table">
+                            <tr>
+                                <th>项目</th>
+                                <th>人工</th>
+                                <th>材料</th>
+                                <th>说明</th>
+                            </tr>
+                            <tr>
+                                <td><strong>水电改造</strong></td>
+                                <td>~4000元</td>
+                                <td>~3300元</td>
+                                <td>含开槽、布线、水管</td>
+                            </tr>
+                            <tr>
+                                <td><strong>木工吊顶</strong></td>
+                                <td>大平顶50元/㎡<br>直线吊顶50元/米<br>双眼皮20元/米</td>
+                                <td>石膏板、龙骨</td>
+                                <td>按实际工程量计算</td>
+                            </tr>
+                            <tr>
+                                <td><strong>瓦工贴砖</strong></td>
+                                <td>50元/㎡</td>
+                                <td>辅料30元/㎡</td>
+                                <td>80平地+52平墙参考</td>
+                            </tr>
+                            <tr>
+                                <td><strong>油工刷漆</strong></td>
+                                <td>23-25元/㎡</td>
+                                <td>~10元/㎡</td>
+                                <td>含腻子、乳胶漆</td>
+                            </tr>
+                            <tr>
+                                <td><strong>其他杂项</strong></td>
+                                <td colspan="2">~2000元</td>
+                                <td>垃圾清运、打孔、成品保护</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="content-grid" style="margin-top: 2rem;">
+                        <div class="info-box">
+                            <h4>💰 预算评估三要素</h4>
+                            <ul>
+                                <li><strong>规划设计费</strong> - 根据房屋面积和装修档次</li>
+                                <li><strong>硬装预算</strong> - 水电、瓦工、木工、油工</li>
+                                <li><strong>电器软装</strong> - 家电、家具、窗帘等</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>📊 装修方式对比</h4>
+                            <table class="material-table">
+                                <tr>
+                                    <th>方式</th>
+                                    <th>优点</th>
+                                    <th>缺点</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>自装</strong></td>
+                                    <td>省去装修公司利润，成本最低</td>
+                                    <td>需自己采购所有材料，耗时费力</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>半包</strong></td>
+                                    <td>辅材装修公司负责，主材自己掌控</td>
+                                    <td>需协调装修公司与材料商</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>全包</strong></td>
+                                    <td>省心省力，一站式服务</td>
+                                    <td>材料选择受限，容易被加价</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第9章：材料选购对比 -->
+        <article class="chapter-card fade-in" id="chapter9">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">09</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">材料选购对比</h2>
+                    <p class="chapter-subtitle">地暖选择 · 柜子制作 · 封窗要点</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="info-box">
+                        <h4>🔥 电地暖 VS 水地暖</h4>
+                        <table class="material-table">
+                            <tr>
+                                <th>对比项</th>
+                                <th>水地暖</th>
+                                <th>电地暖</th>
+                            </tr>
+                            <tr>
+                                <td><strong>初期成本</strong></td>
+                                <td>高（需锅炉+管道）</td>
+                                <td>低（仅电缆/膜）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>使用成本</strong></td>
+                                <td>低（燃气便宜）</td>
+                                <td>高（电费贵）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>适用面积</strong></td>
+                                <td>大面积更划算</td>
+                                <td>小面积（<60㎡）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>升温速度</strong></td>
+                                <td>慢（需预热）</td>
+                                <td>快（即开即热）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>安全性</strong></td>
+                                <td>好（无电磁辐射）</td>
+                                <td>需注意电磁辐射和跳闸</td>
+                            </tr>
+                            <tr>
+                                <td><strong>维护</strong></td>
+                                <td>需定期清洗管道</td>
+                                <td>基本免维护</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 2rem;">
+                        <h4>🪑 全屋定制 VS 木工打柜子</h4>
+                        <table class="material-table">
+                            <tr>
+                                <th>对比项</th>
+                                <th>全屋定制</th>
+                                <th>木工现场打</th>
+                            </tr>
+                            <tr>
+                                <td><strong>封边工艺</strong></td>
+                                <td>PUR封边，精致美观</td>
+                                <td>手工封边，一般水平</td>
+                            </tr>
+                            <tr>
+                                <td><strong>灯带安装</strong></td>
+                                <td>工厂预埋，效果好</td>
+                                <td>现场加装，效果一般</td>
+                            </tr>
+                            <tr>
+                                <td><strong>板材选择</strong></td>
+                                <td>品牌多，花色全</td>
+                                <td>选择有限</td>
+                            </tr>
+                            <tr>
+                                <td><strong>尺寸贴合</strong></td>
+                                <td>按图纸生产，有误差</td>
+                                <td>现场量尺，更贴合</td>
+                            </tr>
+                            <tr>
+                                <td><strong>成本</strong></td>
+                                <td>高（品牌溢价）</td>
+                                <td>低（仅材料+人工）</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="info-box warning-box" style="margin-top: 2rem;">
+                        <h4>🪟 封阳台换窗户三底线</h4>
+                        <ul>
+                            <li><strong>断桥铝型材</strong> - 选原生铝，壁厚≥1.4mm（新国标1.8mm），隔热条选PA66尼龙</li>
+                            <li><strong>3C认证钢化玻璃</strong> - 必须有3C标志，双层中空，大玻璃要加厚</li>
+                            <li><strong>五金配件</strong> - 执手、铰链、滑轨选知名品牌，关乎使用寿命</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第10章：小白业主装修合同指南 -->
+        <article class="chapter-card fade-in" id="chapter10">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">10</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">小白业主装修合同指南</h2>
+                    <p class="chapter-subtitle">全屋定制套路 · 增项漏项大全</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="info-box warning-box">
+                        <h4>衣柜定制20+套路</h4>
+                    </div>
+                    <div class="trap-grid">
+                        <div class="trap-card">
+                            <div class="trap-title">五金小件加价</div>
+                            <div class="trap-desc">基础五金包含数量有限，超出的额外收费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">抽屉收费</div>
+                            <div class="trap-desc">套餐不含抽屉，增加或特殊抽屉额外费用</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">内部格局设计</div>
+                            <div class="trap-desc">隔板数量有限制，超出按块收费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">拉直器</div>
+                            <div class="trap-desc">国产柜门超1.8米需拉直器防变形</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">灯带加价</div>
+                            <div class="trap-desc">展示柜灯带可能不赠送，需问清报价</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">见光板</div>
+                            <div class="trap-desc">按柜体还是柜门价格收费，差距大</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">背板套路</div>
+                            <div class="trap-desc">厚度、封边、稳定性、环保标准都有讲究</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">收口条</div>
+                            <div class="trap-desc">容易重复收费，一个柜子轻松坑800+</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">L型转角</div>
+                            <div class="trap-desc">转角测量方式和重复计费问题</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">环保标准</div>
+                            <div class="trap-desc">可能以次充好，验收需注意板材等级</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box warning-box" style="margin-top: 2rem;">
+                        <h4>橱柜定制套路</h4>
+                    </div>
+                    <div class="trap-grid">
+                        <div class="trap-card">
+                            <div class="trap-title">吊柜高低进深</div>
+                            <div class="trap-desc">超60公分高度是否加价</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">石英石厚度</div>
+                            <div class="trap-desc">选择合适厚度，考虑成本与耐用性</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">抽屉多收费</div>
+                            <div class="trap-desc">多做抽屉是否额外收费</div>
+                        </div>
+                        <div class="trap-card">
+                            <div class="trap-title">辅助造型</div>
+                            <div class="trap-desc">顶线、边线等可能额外收费</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 2rem;">
+                        <h4>📋 装修增项漏项大全（部分）</h4>
+                        <table class="material-table">
+                            <tr>
+                                <th>增项名称</th>
+                                <th>说明</th>
+                            </tr>
+                            <tr>
+                                <td>项目管理费</td>
+                                <td>尽量砍价，本是装修公司义务</td>
+                            </tr>
+                            <tr>
+                                <td>防水施工</td>
+                                <td>洗手间防水报价低于国标，后期加价</td>
+                            </tr>
+                            <tr>
+                                <td>勾缝升级美缝</td>
+                                <td>勾缝易脏发霉，美缝需额外付费</td>
+                            </tr>
+                            <tr>
+                                <td>材料损耗</td>
+                                <td>瓷砖切割损耗约5-10%，需提前明确责任</td>
+                            </tr>
+                            <tr>
+                                <td>瓷砖倒角磨边</td>
+                                <td>海棠角建议让瓷砖商家做，省钱工好</td>
+                            </tr>
+                            <tr>
+                                <td>水电改造</td>
+                                <td>明管按暗管收费、单管单线增加长度</td>
+                            </tr>
+                            <tr>
+                                <td>卫生间回填</td>
+                                <td>需明确回填材料种类，陶粒优于建筑垃圾</td>
+                            </tr>
+                            <tr>
+                                <td>全屋挂网</td>
+                                <td>仅需局部挂网即可，全屋多花钱</td>
+                            </tr>
+                            <tr>
+                                <td>乳胶漆调色</td>
+                                <td>深色需专用机器，额外费用</td>
+                            </tr>
+                            <tr>
+                                <td>窗帘盒</td>
+                                <td>电动窗帘需加宽至26cm，电源额外费用</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第11章：防水施工 -->
+        <article class="chapter-card fade-in" id="chapter11">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">11</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">防水施工</h2>
+                    <p class="chapter-subtitle">材料选购 · 标准流程 · 验收标准</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="content-grid">
+                        <div class="info-box">
+                            <h4>🛡️ 防水材料选购标准</h4>
+                            <table class="material-table">
+                                <tr>
+                                    <th>类型</th>
+                                    <th>标准号</th>
+                                    <th>适用范围</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>刚性防水</strong></td>
+                                    <td>JC/T 2090-2011</td>
+                                    <td>厨卫墙面/地面</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>柔性防水</strong></td>
+                                    <td>GB/T 23445-2009</td>
+                                    <td>厨卫地面/墙面</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="info-box warning-box">
+                            <h4>⚠️ 防水避坑要点</h4>
+                            <ul>
+                                <li>卫生间门口发霉 → 过门石防水施工要点</li>
+                                <li>淋浴房区域防水高度 ≥ 1.8米</li>
+                                <li>贴砖前需做地面防水保护</li>
+                                <li>墙面防水需拉毛处理</li>
+                                <li>立管建议用红砖，稳定好、隔音好、瓷砖不开裂</li>
+                                <li>闭水试验水深 ≥ 20mm，时间 ≥ 24小时</li>
+                            </ul>
+                        </div>
+                        <div class="info-box success-box">
+                            <h4>✅ 防水标准流程</h4>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <div class="step-title">基层处理</div>
+                                        <div class="step-desc">墙面抹灰，无凹凸不平/起砂/空鼓，阴角倒角，地面1%找坡</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <div class="step-title">加强处理</div>
+                                        <div class="step-desc">墙角增设附加层，水电开槽内做好防水</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <div class="step-title">涂刷防水</div>
+                                        <div class="step-desc">至少两遍，墙面收口平直，全屋高度达1.8m</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <div class="step-title">闭水试验</div>
+                                        <div class="step-desc">水深≥20mm，时间≥24小时，保留影像资料</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第12章：木工施工 -->
+        <article class="chapter-card fade-in" id="chapter12">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">12</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">木工施工</h2>
+                    <p class="chapter-subtitle">吊顶 · 隔音 · 材料品牌</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="content-grid">
+                        <div class="info-box warning-box">
+                            <h4>⚠️ 木工避坑细节</h4>
+                            <ul>
+                                <li><strong>双层石膏板吊顶</strong> - 转角处采用L形整板切割（七字拐）</li>
+                                <li><strong>接缝处理</strong> - V字型坡口（八字缝），防开裂</li>
+                                <li><strong>上下层接缝</strong> - 应错开，不得在同一根龙骨上</li>
+                                <li><strong>螺丝钉</strong> - 刷防锈漆，与板边距离10-20mm</li>
+                                <li><strong>窗帘盒</strong> - 欧松板打底并调平处理</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>📦 材料品牌推荐</h4>
+                            <table class="material-table">
+                                <tr>
+                                    <th>材料</th>
+                                    <th>推荐品牌</th>
+                                </tr>
+                                <tr>
+                                    <td>石膏板</td>
+                                    <td>泰山、拉法基、龙牌、可耐福</td>
+                                </tr>
+                                <tr>
+                                    <td>轻钢龙骨</td>
+                                    <td>龙牌、青钢、杰森、阿姆斯壮、可耐福</td>
+                                </tr>
+                                <tr>
+                                    <td>白乳胶</td>
+                                    <td>百得、三棵树（符合GB 18583-2008）</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="info-box">
+                            <h4>📐 验收标准</h4>
+                            <ul>
+                                <li>表面平整度：<strong>≤3mm</strong>（2m靠尺检查）</li>
+                                <li>接缝高低差：<strong>≤1mm</strong></li>
+                                <li>与墙面留缝：<strong>5mm</strong> 或V型缝隙</li>
+                                <li>次龙骨连接：用铆钉固定，不得用螺丝</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第13章：瓦工施工 -->
+        <article class="chapter-card fade-in" id="chapter13">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">13</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">瓦工施工</h2>
+                    <p class="chapter-subtitle">瓷砖铺贴 · 防水 · 回填</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="content-grid">
+                        <div class="info-box warning-box">
+                            <h4>⚠️ 瓦工避坑细节</h4>
+                            <ul>
+                                <li><strong>新建墙体</strong> - 植筋挂网防开裂，禁止用建筑垃圾回填</li>
+                                <li><strong>下水管隔音</strong> - 阻尼片+隔音棉</li>
+                                <li><strong>阳角处理</strong> - 45度碰角，海棠角建议加工厂做</li>
+                                <li><strong>墙压地 vs 地压墙</strong> - 墙压地美观且防积水</li>
+                                <li><strong>下沉式卫生间</strong> - 必须用陶粒回填</li>
+                                <li><strong>瓷砖背胶</strong> - 单组份是智商税，双组份家用不必要</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>📏 验收标准</h4>
+                            <table class="material-table">
+                                <tr>
+                                    <th>项目</th>
+                                    <th>标准</th>
+                                </tr>
+                                <tr>
+                                    <td>墙砖空鼓率</td>
+                                    <td>单砖≤15%，整体≤5%</td>
+                                </tr>
+                                <tr>
+                                    <td>地砖空鼓率</td>
+                                    <td>≤3%</td>
+                                </tr>
+                                <tr>
+                                    <td>表面平整度</td>
+                                    <td>≤3mm（2m靠尺）</td>
+                                </tr>
+                                <tr>
+                                    <td>阴阳角方正</td>
+                                    <td>≤3mm</td>
+                                </tr>
+                                <tr>
+                                    <td>卫生间坡度</td>
+                                    <td>0.5%-1%，地漏在最低点</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第14章：油工施工 -->
+        <article class="chapter-card fade-in" id="chapter14">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">14</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">油工施工</h2>
+                    <p class="chapter-subtitle">墙面处理 · 腻子 · 乳胶漆</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="content-grid">
+                        <div class="info-box">
+                            <h4>🎨 油工标准流程</h4>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <div class="step-title">基层处理</div>
+                                        <div class="step-desc">铲除原腻子，检查裂缝和起鼓</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <div class="step-title">刷墙固</div>
+                                        <div class="step-desc">增强附着力，使用468界面剂</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <div class="step-title">石膏找平</div>
+                                        <div class="step-desc">线槽用嵌缝石膏回填，挂网格绷带</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <div class="step-title">刮腻子</div>
+                                        <div class="step-desc">两遍腻子，阴干3-4天，总厚度≤3mm</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <div class="step-title">打磨</div>
+                                        <div class="step-desc">两遍打磨，角磨机+手工</div>
+                                    </div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-number">6</div>
+                                    <div class="step-content">
+                                        <div class="step-title">刷漆</div>
+                                        <div class="step-desc">底漆+面漆两遍，滚涂优于喷涂</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-box warning-box">
+                            <h4>⚠️ 避坑要点</h4>
+                            <ul>
+                                <li>南方潮湿地区必须刷底漆</li>
+                                <li>腻子粉不加胶水，防止甲醛超标</li>
+                                <li>有射灯墙面需仔细打磨，避免波浪纹</li>
+                                <li>柜子区域建议冲筋找平，无缝隙</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第20章：设计资源 -->
+        <article class="chapter-card fade-in" id="chapter20">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">20</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">设计资源</h2>
+                    <p class="chapter-subtitle">设计师常用网站 · 灵感参考</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="info-box">
+                        <h4>🌐 设计师常用网站推荐</h4>
+                        <table class="material-table">
+                            <tr>
+                                <th>网站名称</th>
+                                <th>网址</th>
+                                <th>特点</th>
+                            </tr>
+                            <tr>
+                                <td><strong>室内设计师联盟</strong></td>
+                                <td>shejiben.com</td>
+                                <td>案例丰富，适合找灵感</td>
+                            </tr>
+                            <tr>
+                                <td><strong>拓者设计吧</strong></td>
+                                <td>tuozhe8.com</td>
+                                <td>效果图多，风格多样</td>
+                            </tr>
+                            <tr>
+                                <td><strong>建E室内设计网</strong></td>
+                                <td>justeasy.cn</td>
+                                <td>模型素材多，专业性强</td>
+                            </tr>
+                            <tr>
+                                <td><strong>设计本</strong></td>
+                                <td>shejiben.com</td>
+                                <td>找设计师平台，可预约量房</td>
+                            </tr>
+                            <tr>
+                                <td><strong>达人室内设计网</strong></td>
+                                <td>darenji.com</td>
+                                <td>实景案例，参考价值高</td>
+                            </tr>
+                            <tr>
+                                <td><strong>A963设计网</strong></td>
+                                <td>a963.com</td>
+                                <td>高端案例，国际视野</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="info-box success-box" style="margin-top: 1.5rem;">
+                        <h4>💡 使用建议</h4>
+                        <ul>
+                            <li>前期找灵感：多看拓者、达人网的实景案例</li>
+                            <li>确定风格：保存喜欢的图片，整理成 mood board</li>
+                            <li>与设计师沟通：用图片表达需求，减少理解偏差</li>
+                            <li>避坑参考：看失败案例，了解常见问题</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 第17章：施工竣工及环保国标汇总 -->
+        <article class="chapter-card fade-in" id="chapter17">
+            <div class="chapter-header" onclick="toggleChapter(this)">
+                <div class="chapter-number">17</div>
+                <div class="chapter-title-group">
+                    <h2 class="chapter-title">施工竣工及环保国标汇总</h2>
+                    <p class="chapter-subtitle">施工规范 · 验收标准 · 环保国标</p>
+                </div>
+                <div class="chapter-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-body">
+                    <div class="content-grid">
+                        <div class="info-box">
+                            <h4>📐 施工规范标准</h4>
+                            <ul>
+                                <li><strong>砌体结构通用规范</strong> - GB 55007-2021</li>
+                                <li><strong>住宅装修施工规范</strong></li>
+                                <li><strong>建筑施工质量验收规范</strong></li>
+                                <li><strong>瓷砖薄贴法施工规程</strong></li>
+                                <li><strong>综合布线设计规范</strong></li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>🌿 环保国标汇总</h4>
+                            <table class="material-table">
+                                <tr>
+                                    <th>材料类型</th>
+                                    <th>标准号</th>
+                                </tr>
+                                <tr>
+                                    <td>人造板甲醛释放量</td>
+                                    <td>GB/T 39600-2021</td>
+                                </tr>
+                                <tr>
+                                    <td>壁纸有害物质限量</td>
+                                    <td>GB 18585-2023</td>
+                                </tr>
+                                <tr>
+                                    <td>胶粘剂有害物质限量</td>
+                                    <td>GB 18583-2008</td>
+                                </tr>
+                                <tr>
+                                    <td>乳胶漆有害物质限量</td>
+                                    <td>GB 18582-2020</td>
+                                </tr>
+                                <tr>
+                                    <td>木器涂料有害物质限量</td>
+                                    <td>GB 18581-2020</td>
+                                </tr>
+                                <tr>
+                                    <td>全屋定制国家标准</td>
+                                    <td>GB/T 39600-2021</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>装修流程指南 | 由 zwindyjun 制作于 2026.04.25</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">内容仅供参考，具体施工请遵循当地规范</p>
+    </footer>
+
+    <!-- 返回顶部 -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </div>
+
+    <script>
+        // 切换章节展开/收起
+        function toggleChapter(header) {
+            const card = header.parentElement;
+            card.classList.toggle('active');
+        }
+
+        // 切换导航
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // 滚动到顶部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
             } else {
-                secEl.classList.add('hidden');
+                backToTop.classList.remove('visible');
             }
         });
-        
-        if (chapterMatch) {
-            chapterEl.classList.remove('hidden');
-            chapterEl.classList.add('active');
-        } else {
-            chapterEl.classList.add('hidden');
-        }
-    });
-    
-    searchCount.textContent = matchCount > 0 ? `找到 ${matchCount} 处匹配` : '无匹配结果';
-});
 
-// 回到顶部
-const backToTop = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-});
-
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// 初始化
-render();
-</script>
+        // 页面加载时默认展开第一个章节
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstChapter = document.querySelector('.chapter-card');
+            if (firstChapter) {
+                firstChapter.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
