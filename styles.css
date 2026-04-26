@@ -352,6 +352,10 @@
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
         }
 
+        .directory-card:hover .directory-cta {
+            transform: translateX(4px);
+        }
+
         .quick-start-card strong,
         .directory-card strong,
         .scenario-card strong,
@@ -511,7 +515,42 @@
             color: var(--accent);
             font-family: 'Noto Serif SC', serif;
             font-weight: 700;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .directory-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .directory-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(212, 165, 116, 0.05), transparent 45%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+        }
+
+        .directory-card:hover::after {
+            opacity: 1;
+        }
+
+        .directory-stage {
+            display: inline-flex;
+            width: fit-content;
+            padding: 0.22rem 0.58rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent) !important;
+            font-size: 0.78rem !important;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.1rem;
         }
 
         .summary-card {
@@ -534,7 +573,10 @@
 
         .directory-cta {
             display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
             margin-top: auto;
+            padding-top: 0.25rem;
             color: var(--accent) !important;
             font-weight: 600;
         }
