@@ -507,6 +507,150 @@
             background: rgba(212, 165, 116, 0.02);
         }
 
+        /* 章节配图 */
+        .chapter-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+
+        .chapter-image:hover {
+            opacity: 1;
+        }
+
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .image-row img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0.85;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .image-row img:hover {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* 图文混排 */
+        .text-image-block {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+        }
+
+        .text-image-block img {
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+
+        .text-image-block img:hover {
+            opacity: 1;
+        }
+
+        .text-image-block .text-side {
+            flex: 1;
+        }
+
+        /* 知识提示框 */
+        .tip-box {
+            background: rgba(245, 182, 66, 0.1);
+            border-left: 3px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: var(--warning);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-box p, .tip-box ul {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* 对比示意图 */
+        .vs-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            align-items: center;
+        }
+
+        .vs-side {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .vs-side h5 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .vs-divider {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .text-image-block {
+                flex-direction: column;
+            }
+            .text-image-block img {
+                width: 100%;
+                height: 180px;
+            }
+            .vs-container {
+                grid-template-columns: 1fr;
+            }
+            .vs-divider {
+                text-align: center;
+            }
+            .image-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .image-row img {
+                height: 120px;
+            }
+        }
+
         /* 返回顶部 */
         .back-to-top {
             position: fixed;
@@ -694,37 +838,45 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=300&fit=crop" alt="新房验房场景" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 为什么要认真验房？</h4>
+                        <p>验房是装修前的第一道防线。很多业主跳过验房直接装修，结果装修后发现问题已经来不及了——墙面空鼓会导致瓷砖脱落，管道漏水要砸墙维修，门窗密封不严冬天冷风灌入……验房发现的问题该让开发商整改的整改，该记录的记录，能省下后期大笔维修费。</p>
+                    </div>
                     <div class="content-grid">
                         <div class="info-box">
                             <h4>📋 精装修房验收要点</h4>
+                            <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">精装房验收重点在于"看得见的要检查，看不见的更要查"——表面做得再漂亮，水电安全不过关也是白搭。</p>
                             <ul>
-                                <li><strong>强电系统验收</strong> - 检测插座安全性能</li>
-                                <li><strong>弱电系统验收</strong> - 网络电视线路检查</li>
-                                <li><strong>门窗验收</strong> - 密封性、锁具、玻璃类型及破损情况</li>
-                                <li><strong>墙面检查</strong> - 空鼓锤敲瓷砖，木地板平整度，踢脚线安装</li>
-                                <li><strong>下水管检查</strong> - 纸巾测试接头漏水，放水查看通畅</li>
-                                <li><strong>柜子验收</strong> - 封边、层板钉子、铰链松动</li>
-                                <li><strong>空调功能</strong> - 制冷制热、无漏水漏气</li>
-                                <li><strong>烟机效果</strong> - 排烟效果测试</li>
+                                <li><strong>强电系统验收</strong> - 用测电笔逐个检测插座，零火线不能接反，漏电保护器按测试钮要立刻跳闸</li>
+                                <li><strong>弱电系统验收</strong> - 网线要测通不通（带个笔记本试），电视信号线也要试，后期重新布线要砸墙</li>
+                                <li><strong>门窗验收</strong> - 反复开关看是否顺畅，密封胶条完整不老化，玻璃有3C认证标识且无裂纹</li>
+                                <li><strong>墙面检查</strong> - 空鼓锤敲瓷砖听声音（空洞声=空鼓，日后必脱落），木地板踩上去不能有响声</li>
+                                <li><strong>下水管检查</strong> - 纸巾擦管道接头看有无渗水，大量放水看排水是否通畅，有无返味</li>
+                                <li><strong>柜子验收</strong> - 封边有无开胶，层板钉子是否到位，铰链松不松，抽屉顺不顺滑</li>
+                                <li><strong>空调功能</strong> - 制冷制热各试15分钟，出风口不能漏水漏气，噪音是否正常</li>
+                                <li><strong>烟机效果</strong> - 开最大档拿纸巾测试吸力，排烟管有无漏烟</li>
                             </ul>
                         </div>
                         <div class="info-box">
                             <h4>🏠 新房毛坯验收</h4>
+                            <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">毛坯房虽然没什么装修可看，但结构问题、渗漏问题都必须在装修前发现——否则装修后就是你的责任了。</p>
                             <ul>
-                                <li><strong>三书一证一表</strong> - 必备文件齐全</li>
-                                <li><strong>门窗检查</strong> - 等级、周边漏水、玻璃开裂</li>
-                                <li><strong>楼上漏水</strong> - 重点检查卫生间、阳台</li>
-                                <li><strong>管道漏水</strong> - 存水弯、阳台雨水管、防水地漏</li>
-                                <li><strong>厨房烟道</strong> - 排烟是否通畅</li>
-                                <li><strong>墙面验收</strong> - 空鼓、平整度</li>
+                                <li><strong>三书一证一表</strong> - 住宅质量保证书、使用说明书、竣工备案表缺一不可，没有可拒绝收房</li>
+                                <li><strong>门窗检查</strong> - 窗框等级是否合同约定，周边有无漏水痕迹，玻璃有无裂纹</li>
+                                <li><strong>楼上漏水</strong> - 重点检查卫生间、阳台天花板，有水印要找楼上维修</li>
+                                <li><strong>管道漏水</strong> - 存水弯有无渗水，阳台雨水管是否通畅，防水地漏有无堵塞</li>
+                                <li><strong>厨房烟道</strong> - 点张纸放烟道口看抽力够不够，不然后期油烟倒灌</li>
+                                <li><strong>墙面验收</strong> - 空鼓锤全屋走一遍，空鼓位置用粉笔标记让开发商整改</li>
                             </ul>
                         </div>
                         <div class="info-box warning-box">
                             <h4>⚠️ 避坑提醒</h4>
                             <ul>
-                                <li>避免物业推荐验房师，可能存在利益关联</li>
-                                <li>空鼓锤几块钱一个，自己全屋走一遍</li>
-                                <li>重点查看手盆打胶缝、窗户飘窗漏水</li>
+                                <li>避免物业推荐验房师——他们跟开发商一条裤子，问题不会帮你都找出来</li>
+                                <li>空鼓锤几块钱一个，自己全屋走一遍，敲到声音空洞的用粉笔标记</li>
+                                <li>重点查看手盆打胶缝（发霉=漏水前兆）、窗户飘窗漏水（下雨后48小时内去验）</li>
+                                <li>带个充电器试每个插座，带个手机测网线口，花1小时省1万</li>
                             </ul>
                         </div>
                     </div>
@@ -748,8 +900,14 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb583902?w=800&h=300&fit=crop" alt="装修规划与预算" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 装修前最重要的事</h4>
+                        <p>装修最怕两件事：一是被装修公司忽悠，二是钱不够做到一半停工。所以在开工前，你要搞清楚自己的预算底线，摸清装修公司的套路，选对装修方式。记住：装修公司的销售话术都是精心设计的，你听到的每一个“优惠”背后都有利润空间。千万不要在销售现场冲动交定金！</p>
+                    </div>
                     <div class="info-box warning-box">
                         <h4>🚨 装修公司套路大全（30+种）</h4>
+                        <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.75rem;">以下是装修公司最常见的套路，每一条都有无数业主踩过坑。签合同前逐条对照，看看你的报价单里藏了多少猫腻。</p>
                     </div>
                     <div class="trap-grid">
                         <div class="trap-card">
@@ -983,8 +1141,14 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=300&fit=crop" alt="装修材料选购" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 材料选购怎么选？</h4>
+                        <p>同样的装修效果，选对材料和选错材料，价格可能差一倍。地暖选电的还是水的？柜子找工厂定制还是现场打？窗户选什么型材？这些选择没有绝对的对错，关键看你的预算、房子面积和使用习惯。下面帮你逐个分析利弊。</p>
+                    </div>
                     <div class="info-box">
                         <h4>🔥 电地暖 VS 水地暖</h4>
+                        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">简单来说：面积大选水暖更省钱，面积小选电暖更省事。水暖装得起用得起，电暖装得起用着心疼电费。</p>
                         <table class="material-table">
                             <tr>
                                 <th>对比项</th>
@@ -1225,6 +1389,11 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&h=300&fit=crop" alt="卫生间防水施工" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 防水做不好，装修全白搭</h4>
+                        <p>防水是装修里最不能省的一步。漏水到楼下，赔偿金动辄几万起步，还要砸掉重来。防水材料没多少钱，但施工不规范等于白做。记住三条死规矩：防水做两遍、闭水试验必须做、墙面防水不低于1.8米——这三条不能妥协。</p>
+                    </div>
                     <div class="content-grid">
                         <div class="info-box">
                             <h4>🛡️ 防水材料选购标准</h4>
@@ -1311,6 +1480,11 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=300&fit=crop" alt="木工吊顶施工" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 木工最怕什么？开裂！</h4>
+                        <p>木工活做得好不好，入住半年就知道了——吊顶开裂是最常见的后遗症。关键在转角处理：必须用L形整板切割（七字拐），接缝留V字型坡口，上下层石膏板接缝要错开。这些细节做不做，决定了你的吊顶能用3年还是10年。</p>
+                    </div>
                     <div class="content-grid">
                         <div class="info-box warning-box">
                             <h4>⚠️ 木工避坑细节</h4>
@@ -1373,6 +1547,11 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=300&fit=crop" alt="瓷砖铺贴施工" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 瓦工是装修花钱大头，也是最易翻车的环节</h4>
+                        <p>瓷砖铺贴是装修里最费钱的工种之一，也是最考验师傅手艺的。空鼓、对缝不齐、坡度不对积水……这些毛病入住后天天看着，修起来要砸砖。瓦工施工时一定要多去现场看，发现问题当场纠正，贴完再改代价太大。</p>
+                    </div>
                     <div class="content-grid">
                         <div class="info-box warning-box">
                             <h4>⚠️ 瓦工避坑细节</h4>
@@ -1435,6 +1614,11 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800&h=300&fit=crop" alt="墙面刷漆施工" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 油工决定你家"颜值"，也是最容易被糊弄的</h4>
+                        <p>刷漆看起来简单，实际上基层处理才是关键。腻子没刮好，漆面再贵也会开裂起皮；有射灯的墙面打磨不平，开灯全是波浪纹，看着闹心。油工是收尾工序，前面工种的问题最后都会在墙面上暴露出来，所以验收要特别仔细。</p>
+                    </div>
                     <div class="content-grid">
                         <div class="info-box">
                             <h4>🎨 油工标准流程</h4>
@@ -1513,6 +1697,12 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=300&fit=crop" alt="室内设计灵感" class="chapter-image">
+                    <div class="tip-box">
+                        <h4>💡 装修前多看案例，比听销售忽悠强100倍</h4>
+                        <p>很多人装修时不知道自己想要什么，全凭设计师或销售推荐，最后装出来不是自己喜欢的风格。建议开工前至少花2-3周浏览案例网站，保存喜欢的图片，整理出自己的风格偏好，这样跟设计师沟通时才不会被动。</p>
+                    </div>
+                <div class="chapter-body">
                     <div class="info-box">
                         <h4>🌐 设计师常用网站推荐</h4>
                         <table class="material-table">
@@ -1582,6 +1772,10 @@
             </div>
             <div class="chapter-content">
                 <div class="chapter-body">
+                    <div class="tip-box">
+                        <h4>💡 这些国标是你的维权利器</h4>
+                        <p>装修出问题时，光说"我觉得不合格"是没用的，要有依据。以下国标是你在验收、维权时最权威的参考——拿给工长看，比吵架管用100倍。建议收藏本页，验收时对照检查。</p>
+                    </div>
                     <div class="content-grid">
                         <div class="info-box">
                             <h4>📐 施工规范标准</h4>
